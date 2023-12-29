@@ -147,6 +147,7 @@ if (isset($_GET['tambah_guru'])) {
     $nip = htmlspecialchars($_POST['nip']);
     $nama = htmlspecialchars($_POST['nama']);
     $telegram = htmlspecialchars($_POST['telegram']);
+    $id_jabatan = htmlspecialchars($_POST['id_jabatan']);
     $password = password_hash(htmlspecialchars($_POST['password2']), PASSWORD_DEFAULT);
 
     if (num_rows("SELECT nip FROM tb_guru WHERE nip = '$nip'") >= 1) {
@@ -154,7 +155,7 @@ if (isset($_GET['tambah_guru'])) {
         return false;
     }
 
-    $query = mysqli_query($conn, "INSERT INTO tb_guru (nip,nama,telegram,profil,password) VALUES ('$nip','$nama','$telegram','user.png','$password')");
+    $query = mysqli_query($conn, "INSERT INTO tb_guru (nip,nama,telegram,profil,password, id_jabatan) VALUES ('$nip','$nama','$telegram','user.png','$password', '$id_jabatan)");
 
     if ($query) {
         echo 'berhasil';

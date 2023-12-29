@@ -45,7 +45,8 @@
                      <div class="form-group">
                         <label for="id_jabatan">Jabatan karyawan <span></span></label>
                         <select name="id_jabatan" id="id_jabatan" class="custom-select custom-select2" required="">
-                           <option value=""></option>
+                        <option value="" disabled selected hidden>Pilih Jabatan</option>
+
                            <?php
                            require "../config.php";
                            $result = mysqli_query($conn, "SELECT * FROM tb_jabatan");

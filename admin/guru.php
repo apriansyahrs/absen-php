@@ -14,7 +14,7 @@ $j_guru = query("SELECT * FROM j_guru LIMIT 1"); ?>
                 Master Jabatan
             </button>
          <div class="btn-group">
-            <button type="button" class="btn btn-primary waves-effect waves-light" id="click-import-guru">
+            <button type="button" class="btn btn-success waves-effect waves-light" id="click-import-guru">
                <i class="fa fa-file"></i>
             </button>
             <button type="button" class="btn btn-primary waves-effect waves-light" id="click-tambah-guru">
