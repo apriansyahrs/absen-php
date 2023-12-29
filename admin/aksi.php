@@ -345,6 +345,8 @@ if (isset($_GET['import_karyawan'])) {
     }
 }
 
+
+
 if (isset($_GET['edit_jadwal_absen_karyawan'])) {
     $senin = $_POST['senin'];
     $masuk_mulai_senin = $_POST['masuk_mulai_senin'] ?? null;
@@ -397,24 +399,292 @@ if (isset($_GET['edit_jadwal_absen_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+if (isset($_GET['custom_jadwal_absen_karyawan'])) {
+    $id_karyawan = $_POST['id_karyawan'];
+    $senin = $_POST['senin'];
+    $masuk_mulai_senin = $_POST['masuk_mulai_senin'] ?? null;
+    $masuk_akhir_senin = $_POST['masuk_akhir_senin'] ?? null;
+    $pulang_mulai_senin = $_POST['pulang_mulai_senin'] ?? null;
+    $pulang_akhir_senin = $_POST['pulang_akhir_senin'] ?? null;
+    $selasa = $_POST['selasa'];
+    $masuk_mulai_selasa = $_POST['masuk_mulai_selasa'] ?? null;
+    $masuk_akhir_selasa = $_POST['masuk_akhir_selasa'] ?? null;
+    $pulang_mulai_selasa = $_POST['pulang_mulai_selasa'] ?? null;
+    $pulang_akhir_selasa = $_POST['pulang_akhir_selasa'] ?? null;
+    $rabu = $_POST['rabu'];
+    $masuk_mulai_rabu = $_POST['masuk_mulai_rabu'] ?? null;
+    $masuk_akhir_rabu = $_POST['masuk_akhir_rabu'] ?? null;
+    $pulang_mulai_rabu = $_POST['pulang_mulai_rabu'] ?? null;
+    $pulang_akhir_rabu = $_POST['pulang_akhir_rabu'] ?? null;
+    $kamis = $_POST['kamis'];
+    $masuk_mulai_kamis = $_POST['masuk_mulai_kamis'] ?? null;
+    $masuk_akhir_kamis = $_POST['masuk_akhir_kamis'] ?? null;
+    $pulang_mulai_kamis = $_POST['pulang_mulai_kamis'] ?? null;
+    $pulang_akhir_kamis = $_POST['pulang_akhir_kamis'] ?? null;
+    $jumat = $_POST['jumat'];
+    $masuk_mulai_jumat = $_POST['masuk_mulai_jumat'] ?? null;
+    $masuk_akhir_jumat = $_POST['masuk_akhir_jumat'] ?? null;
+    $pulang_mulai_jumat = $_POST['pulang_mulai_jumat'] ?? null;
+    $pulang_akhir_jumat = $_POST['pulang_akhir_jumat'] ?? null;
+    $sabtu = $_POST['sabtu'];
+    $masuk_mulai_sabtu = $_POST['masuk_mulai_sabtu'] ?? null;
+    $masuk_akhir_sabtu = $_POST['masuk_akhir_sabtu'] ?? null;
+    $pulang_mulai_sabtu = $_POST['pulang_mulai_sabtu'] ?? null;
+    $pulang_akhir_sabtu = $_POST['pulang_akhir_sabtu'] ?? null;
+    $minggu = $_POST['minggu'];
+    $masuk_mulai_minggu = $_POST['masuk_mulai_minggu'] ?? null;
+    $masuk_akhir_minggu = $_POST['masuk_akhir_minggu'] ?? null;
+    $pulang_mulai_minggu = $_POST['pulang_mulai_minggu'] ?? null;
+    $pulang_akhir_minggu = $_POST['pulang_akhir_minggu'] ?? null;
 
-if (isset($_GET['edit_jadwal_absen_guru'])) {
-    $masuk_mulai = $_POST['masuk_mulai'];
-    $masuk_akhir = $_POST['masuk_akhir'];
-    $pulang_mulai = $_POST['pulang_mulai'];
-    $pulang_akhir = $_POST['pulang_akhir'];
-    $pulang_mulai_jumat = $_POST['pulang_mulai_jumat'];
-    $pulang_akhir_jumat = $_POST['pulang_akhir_jumat'];
-
-    $query = mysqli_query($conn, "UPDATE j_guru SET
-   masuk_mulai = '$masuk_mulai', masuk_akhir = '$masuk_akhir', pulang_mulai = '$pulang_mulai', pulang_akhir = '$pulang_akhir',pulang_mulai_jumat = '$pulang_mulai_jumat', pulang_akhir_jumat =
-   '$pulang_akhir_jumat'");
+    $query = mysqli_query($conn, "INSERT INTO j_karyawan (senin, masuk_mulai_senin, masuk_akhir_senin, pulang_mulai_senin, pulang_akhir_senin, selasa, masuk_mulai_selasa, masuk_akhir_selasa, pulang_mulai_selasa, pulang_akhir_selasa, rabu, masuk_mulai_rabu, masuk_akhir_rabu, pulang_mulai_rabu, pulang_akhir_rabu, kamis, masuk_mulai_kamis, masuk_akhir_kamis, pulang_mulai_kamis, pulang_akhir_kamis, jumat, masuk_mulai_jumat, masuk_akhir_jumat, pulang_mulai_jumat, pulang_akhir_jumat, sabtu, masuk_mulai_sabtu, masuk_akhir_sabtu, pulang_mulai_sabtu, pulang_akhir_sabtu, minggu, masuk_mulai_minggu, masuk_akhir_minggu, pulang_mulai_minggu, pulang_akhir_minggu, id_karyawan)
+    VALUES ('$senin', '$masuk_mulai_senin', '$masuk_akhir_senin', '$pulang_mulai_senin', '$pulang_akhir_senin',
+    '$selasa', '$masuk_mulai_selasa', '$masuk_akhir_selasa', '$pulang_mulai_selasa', '$pulang_akhir_selasa',
+    '$rabu', '$masuk_mulai_rabu', '$masuk_akhir_rabu', '$pulang_mulai_rabu', '$pulang_akhir_rabu',
+    '$kamis', '$masuk_mulai_kamis', '$masuk_akhir_kamis', '$pulang_mulai_kamis', '$pulang_akhir_kamis',
+    '$jumat', '$masuk_mulai_jumat', '$masuk_akhir_jumat', '$pulang_mulai_jumat', '$pulang_akhir_jumat',
+    '$sabtu', '$masuk_mulai_sabtu', '$masuk_akhir_sabtu', '$pulang_mulai_sabtu', '$pulang_akhir_sabtu',
+    '$minggu', '$masuk_mulai_minggu', '$masuk_akhir_minggu', '$pulang_mulai_minggu', '$pulang_akhir_minggu', '$id_karyawan')");
     if ($query) {
         echo 'berhasil';
     } else {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+if (isset($_GET['edit_custom_jadwal_absen_karyawan'])) {
+    $id_j_karyawan = $_POST['id_j_karyawan'];
+    $senin = $_POST['senin'];
+    $masuk_mulai_senin = $_POST['masuk_mulai_senin'] ?? null;
+    $masuk_akhir_senin = $_POST['masuk_akhir_senin'] ?? null;
+    $pulang_mulai_senin = $_POST['pulang_mulai_senin'] ?? null;
+    $pulang_akhir_senin = $_POST['pulang_akhir_senin'] ?? null;
+    $selasa = $_POST['selasa'];
+    $masuk_mulai_selasa = $_POST['masuk_mulai_selasa'] ?? null;
+    $masuk_akhir_selasa = $_POST['masuk_akhir_selasa'] ?? null;
+    $pulang_mulai_selasa = $_POST['pulang_mulai_selasa'] ?? null;
+    $pulang_akhir_selasa = $_POST['pulang_akhir_selasa'] ?? null;
+    $rabu = $_POST['rabu'];
+    $masuk_mulai_rabu = $_POST['masuk_mulai_rabu'] ?? null;
+    $masuk_akhir_rabu = $_POST['masuk_akhir_rabu'] ?? null;
+    $pulang_mulai_rabu = $_POST['pulang_mulai_rabu'] ?? null;
+    $pulang_akhir_rabu = $_POST['pulang_akhir_rabu'] ?? null;
+    $kamis = $_POST['kamis'];
+    $masuk_mulai_kamis = $_POST['masuk_mulai_kamis'] ?? null;
+    $masuk_akhir_kamis = $_POST['masuk_akhir_kamis'] ?? null;
+    $pulang_mulai_kamis = $_POST['pulang_mulai_kamis'] ?? null;
+    $pulang_akhir_kamis = $_POST['pulang_akhir_kamis'] ?? null;
+    $jumat = $_POST['jumat'];
+    $masuk_mulai_jumat = $_POST['masuk_mulai_jumat'] ?? null;
+    $masuk_akhir_jumat = $_POST['masuk_akhir_jumat'] ?? null;
+    $pulang_mulai_jumat = $_POST['pulang_mulai_jumat'] ?? null;
+    $pulang_akhir_jumat = $_POST['pulang_akhir_jumat'] ?? null;
+    $sabtu = $_POST['sabtu'];
+    $masuk_mulai_sabtu = $_POST['masuk_mulai_sabtu'] ?? null;
+    $masuk_akhir_sabtu = $_POST['masuk_akhir_sabtu'] ?? null;
+    $pulang_mulai_sabtu = $_POST['pulang_mulai_sabtu'] ?? null;
+    $pulang_akhir_sabtu = $_POST['pulang_akhir_sabtu'] ?? null;
+    $minggu = $_POST['minggu'];
+    $masuk_mulai_minggu = $_POST['masuk_mulai_minggu'] ?? null;
+    $masuk_akhir_minggu = $_POST['masuk_akhir_minggu'] ?? null;
+    $pulang_mulai_minggu = $_POST['pulang_mulai_minggu'] ?? null;
+    $pulang_akhir_minggu = $_POST['pulang_akhir_minggu'] ?? null;
+
+    $query = mysqli_query($conn, "UPDATE j_karyawan SET
+   senin = '$senin', masuk_mulai_senin = '$masuk_mulai_senin', masuk_akhir_senin = '$masuk_akhir_senin', pulang_mulai_senin = '$pulang_mulai_senin', pulang_akhir_senin = '$pulang_akhir_senin',
+   selasa = '$selasa', masuk_mulai_selasa = '$masuk_mulai_selasa', masuk_akhir_selasa = '$masuk_akhir_selasa', pulang_mulai_selasa = '$pulang_mulai_selasa', pulang_akhir_selasa = '$pulang_akhir_selasa',
+   rabu = '$rabu', masuk_mulai_rabu = '$masuk_mulai_rabu', masuk_akhir_rabu = '$masuk_akhir_rabu', pulang_mulai_rabu = '$pulang_mulai_rabu', pulang_akhir_rabu = '$pulang_akhir_rabu',
+   kamis = '$kamis', masuk_mulai_kamis = '$masuk_mulai_kamis', masuk_akhir_kamis = '$masuk_akhir_kamis', pulang_mulai_kamis = '$pulang_mulai_kamis', pulang_akhir_kamis = '$pulang_akhir_kamis',
+   jumat = '$jumat', masuk_mulai_jumat = '$masuk_mulai_jumat', masuk_akhir_jumat = '$masuk_akhir_jumat', pulang_mulai_jumat = '$pulang_mulai_jumat', pulang_akhir_jumat = '$pulang_akhir_jumat',
+   sabtu = '$sabtu', masuk_mulai_sabtu = '$masuk_mulai_sabtu', masuk_akhir_sabtu = '$masuk_akhir_sabtu', pulang_mulai_sabtu = '$pulang_mulai_sabtu', pulang_akhir_sabtu = '$pulang_akhir_sabtu',
+   minggu = '$minggu', masuk_mulai_minggu = '$masuk_mulai_minggu', masuk_akhir_minggu = '$masuk_akhir_minggu', pulang_mulai_minggu = '$pulang_mulai_minggu', pulang_akhir_minggu = '$pulang_akhir_minggu' WHERE id_j_karyawan = '$id_j_karyawan'
+    ");
+    if ($query) {
+        echo 'berhasil';
+    } else {
+        echo 'Terdapat kesalahan pada sistem';
+    }
+}
+if (isset($_GET['hapus_custom_jadwal_absen_karyawan'])) {
+    $id_j_karyawan = $_POST['id_$id_j_karyawan'];
+    $query = mysqli_query($conn, "DELETE FROM j_karyawan WHERE id_j_karyawan = '$id_j_karyawan'");
+    if ($query) {
+        echo 'berhasil';
+    } else {
+        echo 'Terdapat kesalahan pada sistem';
+    }
+}
+
+
+if (isset($_GET['edit_jadwal_absen_guru'])) {
+    $senin = $_POST['senin'];
+    $masuk_mulai_senin = $_POST['masuk_mulai_senin'] ?? null;
+    $masuk_akhir_senin = $_POST['masuk_akhir_senin'] ?? null;
+    $pulang_mulai_senin = $_POST['pulang_mulai_senin'] ?? null;
+    $pulang_akhir_senin = $_POST['pulang_akhir_senin'] ?? null;
+    $selasa = $_POST['selasa'];
+    $masuk_mulai_selasa = $_POST['masuk_mulai_selasa'] ?? null;
+    $masuk_akhir_selasa = $_POST['masuk_akhir_selasa'] ?? null;
+    $pulang_mulai_selasa = $_POST['pulang_mulai_selasa'] ?? null;
+    $pulang_akhir_selasa = $_POST['pulang_akhir_selasa'] ?? null;
+    $rabu = $_POST['rabu'];
+    $masuk_mulai_rabu = $_POST['masuk_mulai_rabu'] ?? null;
+    $masuk_akhir_rabu = $_POST['masuk_akhir_rabu'] ?? null;
+    $pulang_mulai_rabu = $_POST['pulang_mulai_rabu'] ?? null;
+    $pulang_akhir_rabu = $_POST['pulang_akhir_rabu'] ?? null;
+    $kamis = $_POST['kamis'];
+    $masuk_mulai_kamis = $_POST['masuk_mulai_kamis'] ?? null;
+    $masuk_akhir_kamis = $_POST['masuk_akhir_kamis'] ?? null;
+    $pulang_mulai_kamis = $_POST['pulang_mulai_kamis'] ?? null;
+    $pulang_akhir_kamis = $_POST['pulang_akhir_kamis'] ?? null;
+    $jumat = $_POST['jumat'];
+    $masuk_mulai_jumat = $_POST['masuk_mulai_jumat'] ?? null;
+    $masuk_akhir_jumat = $_POST['masuk_akhir_jumat'] ?? null;
+    $pulang_mulai_jumat = $_POST['pulang_mulai_jumat'] ?? null;
+    $pulang_akhir_jumat = $_POST['pulang_akhir_jumat'] ?? null;
+    $sabtu = $_POST['sabtu'];
+    $masuk_mulai_sabtu = $_POST['masuk_mulai_sabtu'] ?? null;
+    $masuk_akhir_sabtu = $_POST['masuk_akhir_sabtu'] ?? null;
+    $pulang_mulai_sabtu = $_POST['pulang_mulai_sabtu'] ?? null;
+    $pulang_akhir_sabtu = $_POST['pulang_akhir_sabtu'] ?? null;
+    $minggu = $_POST['minggu'];
+    $masuk_mulai_minggu = $_POST['masuk_mulai_minggu'] ?? null;
+    $masuk_akhir_minggu = $_POST['masuk_akhir_minggu'] ?? null;
+    $pulang_mulai_minggu = $_POST['pulang_mulai_minggu'] ?? null;
+    $pulang_akhir_minggu = $_POST['pulang_akhir_minggu'] ?? null;
+
+    $query = mysqli_query($conn, "UPDATE j_guru SET
+   senin = '$senin', masuk_mulai_senin = '$masuk_mulai_senin', masuk_akhir_senin = '$masuk_akhir_senin', pulang_mulai_senin = '$pulang_mulai_senin', pulang_akhir_senin = '$pulang_akhir_senin',
+   selasa = '$selasa', masuk_mulai_selasa = '$masuk_mulai_selasa', masuk_akhir_selasa = '$masuk_akhir_selasa', pulang_mulai_selasa = '$pulang_mulai_selasa', pulang_akhir_selasa = '$pulang_akhir_selasa',
+   rabu = '$rabu', masuk_mulai_rabu = '$masuk_mulai_rabu', masuk_akhir_rabu = '$masuk_akhir_rabu', pulang_mulai_rabu = '$pulang_mulai_rabu', pulang_akhir_rabu = '$pulang_akhir_rabu',
+   kamis = '$kamis', masuk_mulai_kamis = '$masuk_mulai_kamis', masuk_akhir_kamis = '$masuk_akhir_kamis', pulang_mulai_kamis = '$pulang_mulai_kamis', pulang_akhir_kamis = '$pulang_akhir_kamis',
+   jumat = '$jumat', masuk_mulai_jumat = '$masuk_mulai_jumat', masuk_akhir_jumat = '$masuk_akhir_jumat', pulang_mulai_jumat = '$pulang_mulai_jumat', pulang_akhir_jumat = '$pulang_akhir_jumat',
+   sabtu = '$sabtu', masuk_mulai_sabtu = '$masuk_mulai_sabtu', masuk_akhir_sabtu = '$masuk_akhir_sabtu', pulang_mulai_sabtu = '$pulang_mulai_sabtu', pulang_akhir_sabtu = '$pulang_akhir_sabtu',
+   minggu = '$minggu', masuk_mulai_minggu = '$masuk_mulai_minggu', masuk_akhir_minggu = '$masuk_akhir_minggu', pulang_mulai_minggu = '$pulang_mulai_minggu', pulang_akhir_minggu = '$pulang_akhir_minggu'
+    ");
+    if ($query) {
+        echo 'berhasil';
+    } else {
+        echo 'Terdapat kesalahan pada sistem';
+    }
+}
+if (isset($_GET['custom_jadwal_absen_guru'])) {
+    $id_guru = $_POST['id_guru'];
+    $senin = $_POST['senin'];
+    $masuk_mulai_senin = $_POST['masuk_mulai_senin'] ?? null;
+    $masuk_akhir_senin = $_POST['masuk_akhir_senin'] ?? null;
+    $pulang_mulai_senin = $_POST['pulang_mulai_senin'] ?? null;
+    $pulang_akhir_senin = $_POST['pulang_akhir_senin'] ?? null;
+    $selasa = $_POST['selasa'];
+    $masuk_mulai_selasa = $_POST['masuk_mulai_selasa'] ?? null;
+    $masuk_akhir_selasa = $_POST['masuk_akhir_selasa'] ?? null;
+    $pulang_mulai_selasa = $_POST['pulang_mulai_selasa'] ?? null;
+    $pulang_akhir_selasa = $_POST['pulang_akhir_selasa'] ?? null;
+    $rabu = $_POST['rabu'];
+    $masuk_mulai_rabu = $_POST['masuk_mulai_rabu'] ?? null;
+    $masuk_akhir_rabu = $_POST['masuk_akhir_rabu'] ?? null;
+    $pulang_mulai_rabu = $_POST['pulang_mulai_rabu'] ?? null;
+    $pulang_akhir_rabu = $_POST['pulang_akhir_rabu'] ?? null;
+    $kamis = $_POST['kamis'];
+    $masuk_mulai_kamis = $_POST['masuk_mulai_kamis'] ?? null;
+    $masuk_akhir_kamis = $_POST['masuk_akhir_kamis'] ?? null;
+    $pulang_mulai_kamis = $_POST['pulang_mulai_kamis'] ?? null;
+    $pulang_akhir_kamis = $_POST['pulang_akhir_kamis'] ?? null;
+    $jumat = $_POST['jumat'];
+    $masuk_mulai_jumat = $_POST['masuk_mulai_jumat'] ?? null;
+    $masuk_akhir_jumat = $_POST['masuk_akhir_jumat'] ?? null;
+    $pulang_mulai_jumat = $_POST['pulang_mulai_jumat'] ?? null;
+    $pulang_akhir_jumat = $_POST['pulang_akhir_jumat'] ?? null;
+    $sabtu = $_POST['sabtu'];
+    $masuk_mulai_sabtu = $_POST['masuk_mulai_sabtu'] ?? null;
+    $masuk_akhir_sabtu = $_POST['masuk_akhir_sabtu'] ?? null;
+    $pulang_mulai_sabtu = $_POST['pulang_mulai_sabtu'] ?? null;
+    $pulang_akhir_sabtu = $_POST['pulang_akhir_sabtu'] ?? null;
+    $minggu = $_POST['minggu'];
+    $masuk_mulai_minggu = $_POST['masuk_mulai_minggu'] ?? null;
+    $masuk_akhir_minggu = $_POST['masuk_akhir_minggu'] ?? null;
+    $pulang_mulai_minggu = $_POST['pulang_mulai_minggu'] ?? null;
+    $pulang_akhir_minggu = $_POST['pulang_akhir_minggu'] ?? null;
+
+    $query = mysqli_query($conn, "INSERT INTO j_guru
+    (senin, masuk_mulai_senin, masuk_akhir_senin, pulang_mulai_senin, pulang_akhir_senin, selasa, masuk_mulai_selasa, masuk_akhir_selasa, pulang_mulai_selasa, pulang_akhir_selasa, rabu, masuk_mulai_rabu, masuk_akhir_rabu, pulang_mulai_rabu, pulang_akhir_rabu, kamis, masuk_mulai_kamis, masuk_akhir_kamis, pulang_mulai_kamis, pulang_akhir_kamis, jumat, masuk_mulai_jumat, masuk_akhir_jumat, pulang_mulai_jumat, pulang_akhir_jumat, sabtu, masuk_mulai_sabtu, masuk_akhir_sabtu, pulang_mulai_sabtu, pulang_akhir_sabtu, minggu, masuk_mulai_minggu, masuk_akhir_minggu, pulang_mulai_minggu, pulang_akhir_minggu, id_guru)
+    VALUES
+    ('$senin', '$masuk_mulai_senin', '$masuk_akhir_senin', '$pulang_mulai_senin', '$pulang_akhir_senin',
+    '$selasa', '$masuk_mulai_selasa', '$masuk_akhir_selasa', '$pulang_mulai_selasa', '$pulang_akhir_selasa',
+    '$rabu', '$masuk_mulai_rabu', '$masuk_akhir_rabu', '$pulang_mulai_rabu', '$pulang_akhir_rabu',
+    '$kamis', '$masuk_mulai_kamis', '$masuk_akhir_kamis', '$pulang_mulai_kamis', '$pulang_akhir_kamis',
+    '$jumat', '$masuk_mulai_jumat', '$masuk_akhir_jumat', '$pulang_mulai_jumat', '$pulang_akhir_jumat',
+    '$sabtu', '$masuk_mulai_sabtu', '$masuk_akhir_sabtu', '$pulang_mulai_sabtu', '$pulang_akhir_sabtu',
+    '$minggu', '$masuk_mulai_minggu', '$masuk_akhir_minggu', '$pulang_mulai_minggu', '$pulang_akhir_minggu', '$id_guru')");
+    if ($query) {
+        echo 'berhasil';
+    } else {
+        echo 'Terdapat kesalahan pada sistem';
+    }
+}
+if (isset($_GET['edit_custom_jadwal_absen_guru'])) {
+    $id_j_guru = $_POST['id_j_guru'];
+    $senin = $_POST['senin'];
+    $masuk_mulai_senin = $_POST['masuk_mulai_senin'] ?? null;
+    $masuk_akhir_senin = $_POST['masuk_akhir_senin'] ?? null;
+    $pulang_mulai_senin = $_POST['pulang_mulai_senin'] ?? null;
+    $pulang_akhir_senin = $_POST['pulang_akhir_senin'] ?? null;
+    $selasa = $_POST['selasa'];
+    $masuk_mulai_selasa = $_POST['masuk_mulai_selasa'] ?? null;
+    $masuk_akhir_selasa = $_POST['masuk_akhir_selasa'] ?? null;
+    $pulang_mulai_selasa = $_POST['pulang_mulai_selasa'] ?? null;
+    $pulang_akhir_selasa = $_POST['pulang_akhir_selasa'] ?? null;
+    $rabu = $_POST['rabu'];
+    $masuk_mulai_rabu = $_POST['masuk_mulai_rabu'] ?? null;
+    $masuk_akhir_rabu = $_POST['masuk_akhir_rabu'] ?? null;
+    $pulang_mulai_rabu = $_POST['pulang_mulai_rabu'] ?? null;
+    $pulang_akhir_rabu = $_POST['pulang_akhir_rabu'] ?? null;
+    $kamis = $_POST['kamis'];
+    $masuk_mulai_kamis = $_POST['masuk_mulai_kamis'] ?? null;
+    $masuk_akhir_kamis = $_POST['masuk_akhir_kamis'] ?? null;
+    $pulang_mulai_kamis = $_POST['pulang_mulai_kamis'] ?? null;
+    $pulang_akhir_kamis = $_POST['pulang_akhir_kamis'] ?? null;
+    $jumat = $_POST['jumat'];
+    $masuk_mulai_jumat = $_POST['masuk_mulai_jumat'] ?? null;
+    $masuk_akhir_jumat = $_POST['masuk_akhir_jumat'] ?? null;
+    $pulang_mulai_jumat = $_POST['pulang_mulai_jumat'] ?? null;
+    $pulang_akhir_jumat = $_POST['pulang_akhir_jumat'] ?? null;
+    $sabtu = $_POST['sabtu'];
+    $masuk_mulai_sabtu = $_POST['masuk_mulai_sabtu'] ?? null;
+    $masuk_akhir_sabtu = $_POST['masuk_akhir_sabtu'] ?? null;
+    $pulang_mulai_sabtu = $_POST['pulang_mulai_sabtu'] ?? null;
+    $pulang_akhir_sabtu = $_POST['pulang_akhir_sabtu'] ?? null;
+    $minggu = $_POST['minggu'];
+    $masuk_mulai_minggu = $_POST['masuk_mulai_minggu'] ?? null;
+    $masuk_akhir_minggu = $_POST['masuk_akhir_minggu'] ?? null;
+    $pulang_mulai_minggu = $_POST['pulang_mulai_minggu'] ?? null;
+    $pulang_akhir_minggu = $_POST['pulang_akhir_minggu'] ?? null;
+
+    $query = mysqli_query($conn, "UPDATE j_guru SET
+   senin = '$senin', masuk_mulai_senin = '$masuk_mulai_senin', masuk_akhir_senin = '$masuk_akhir_senin', pulang_mulai_senin = '$pulang_mulai_senin', pulang_akhir_senin = '$pulang_akhir_senin',
+   selasa = '$selasa', masuk_mulai_selasa = '$masuk_mulai_selasa', masuk_akhir_selasa = '$masuk_akhir_selasa', pulang_mulai_selasa = '$pulang_mulai_selasa', pulang_akhir_selasa = '$pulang_akhir_selasa',
+   rabu = '$rabu', masuk_mulai_rabu = '$masuk_mulai_rabu', masuk_akhir_rabu = '$masuk_akhir_rabu', pulang_mulai_rabu = '$pulang_mulai_rabu', pulang_akhir_rabu = '$pulang_akhir_rabu',
+   kamis = '$kamis', masuk_mulai_kamis = '$masuk_mulai_kamis', masuk_akhir_kamis = '$masuk_akhir_kamis', pulang_mulai_kamis = '$pulang_mulai_kamis', pulang_akhir_kamis = '$pulang_akhir_kamis',
+   jumat = '$jumat', masuk_mulai_jumat = '$masuk_mulai_jumat', masuk_akhir_jumat = '$masuk_akhir_jumat', pulang_mulai_jumat = '$pulang_mulai_jumat', pulang_akhir_jumat = '$pulang_akhir_jumat',
+   sabtu = '$sabtu', masuk_mulai_sabtu = '$masuk_mulai_sabtu', masuk_akhir_sabtu = '$masuk_akhir_sabtu', pulang_mulai_sabtu = '$pulang_mulai_sabtu', pulang_akhir_sabtu = '$pulang_akhir_sabtu',
+   minggu = '$minggu', masuk_mulai_minggu = '$masuk_mulai_minggu', masuk_akhir_minggu = '$masuk_akhir_minggu', pulang_mulai_minggu = '$pulang_mulai_minggu', pulang_akhir_minggu = '$pulang_akhir_minggu' WHERE id_j_guru = '$id_j_guru'
+    ");
+    if ($query) {
+        echo 'berhasil';
+    } else {
+        echo 'Terdapat kesalahan pada sistem';
+    }
+}
+if (isset($_GET['hapus_custom_jadwal_absen_guru'])) {
+    $id_j_guru = $_POST['id_j_guru'];
+    $query = mysqli_query($conn, "DELETE FROM j_guru WHERE id_j_guru = '$id_j_guru'");
+    if ($query) {
+        echo 'berhasil';
+    } else {
+        echo 'Terdapat kesalahan pada sistem';
+    }
+}
+
+
 
 if (isset($_GET['edit_profil_karyawan'])) {
     $id_karyawan = $_POST['id_karyawan'];
@@ -461,7 +731,6 @@ if (isset($_GET['edit_jabatan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
-
 if (isset($_GET['hapus_jabatan'])) {
     $id_jabatan = $_POST['id_jabatan'];
 
@@ -472,7 +741,6 @@ if (isset($_GET['hapus_jabatan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
-
 if (isset($_GET['tambah_cuti_guru'])) {
     $id_guru = $_POST['id_guru'];
     $keterangan = htmlspecialchars($_POST['keterangan_guru']);
