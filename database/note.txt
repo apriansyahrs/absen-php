@@ -1,0 +1,1 @@
+bagi yang beli dari versi 4, langsung import file database absensi_v4
