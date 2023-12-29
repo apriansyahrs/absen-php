@@ -1,1 +1,1 @@
-http://localhost:8888/php-absensi
+http://localhost:8888/absen
