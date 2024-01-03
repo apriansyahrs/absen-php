@@ -3,7 +3,7 @@ const toCache = [
     '/',
     'assets/js/web.webmanifest',
     'assets/js/register.js',
-    'assets/img/icon.png',
+    'assets/img/icons8-checkmark-48.png',
 ];
 
 self.addEventListener('install', function(event) {
