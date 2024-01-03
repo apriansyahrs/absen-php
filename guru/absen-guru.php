@@ -199,21 +199,21 @@ function absenPulang()
                                 if (absenMasuk() == 0) {
                                     echo 'Sekarang waktunya melakukan absen masuk';
                                 } else {
-                                    echo 'Kamu sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                    echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
                                 }
                             } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
                                 if (absenMasuk() == 0) {
                                     echo 'Absen masuk sudah berakhir pada jam ' . $j_guru['masuk_akhir'] . ' yang lalu';
                                 } else {
-                                    echo 'Kamu sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                    echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
                                 }
                             } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
                                 if (absenMasuk() == 0) {
-                                    echo 'Kamu tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                    echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
                                 } elseif (absenPulang() == 0) {
                                     echo 'Sekarang waktunya melakukan absen pulang';
                                 } else {
-                                    echo 'Kamu sudah melakukan absen pulang hari ini';
+                                    echo 'Anda sudah melakukan absen pulang hari ini';
                                 }
                             } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
                                 if (absenPulang() == 0) {
@@ -223,7 +223,7 @@ function absenPulang()
                                         echo 'Absen pulang sudah berakhir pada jam ' . $j_guru['pulang_akhir'] . ' yang lalu';
                                     }
                                 } else {
-                                    echo 'Kamu sudah melakukan absen pulang hari ini';
+                                    echo 'Anda sudah melakukan absen pulang hari ini';
                                 }
                             } else {
                                 echo 'Belum waktunya melakukan absen masuk';
@@ -480,7 +480,7 @@ function absenPulang()
                         <div class="form-group">
                             <div id="my_camera"></div>
                         </div>
-                        <p class="text-left font-italic">Posisikan muka kamu di kamera, sampai proses absen selesai dan pastikan GPS kamu dalam keadaan aktif!</p>
+                        <p class="text-left font-italic">Posisikan muka anda di kamera, sampai proses absen selesai dan pastikan GPS anda dalam keadaan aktif!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-linear-primary btn-lg btn-user btn-block waves-effect waves-light" id="btn-absen-masuk">Absen Masuk</button>
@@ -514,7 +514,7 @@ if ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
                             <div class="form-group">
                                 <div id="my_camera_pulang"></div>
                             </div>
-                            <p class="text-left font-italic">Posisikan muka kamu di kamera, sampai proses absen selesai dan pastikan GPS kamu dalam keadaan aktif!</p>
+                            <p class="text-left font-italic">Posisikan muka anda di kamera, sampai proses absen selesai dan pastikan GPS anda dalam keadaan aktif!</p>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-linear-primary btn-lg btn-user btn-block waves-effect waves-light" id="btn-absen-pulang">Absen Pulang</button>
@@ -558,7 +558,7 @@ if ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
                             <div class="form-group">
                                 <div id="my_camera"></div>
                             </div>
-                            <p class="text-left font-italic">Posisikan muka kamu di kamera, sampai proses absen selesai dan pastikan GPS kamu dalam keadaan aktif!</p>
+                            <p class="text-left font-italic">Posisikan muka anda di kamera, sampai proses absen selesai dan pastikan GPS anda dalam keadaan aktif!</p>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-linear-primary btn-lg btn-user btn-block waves-effect waves-light" id="btn-absen-masuk">Absen Masuk</button>

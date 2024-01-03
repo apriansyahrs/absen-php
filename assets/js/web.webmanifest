@@ -1,0 +1,16 @@
+{
+    "name": "Absensi SMA Al-Azhar 5 Cirebon",
+    "short_name": "Absensi",
+    "description": "Aplikasi Absensi SMA Al-Azhar 5 Cirebon",
+    "icons": [
+        {
+            "src": "../img/icons8-checkmark-48.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#0d0072",
+    "background_color": "#0d0072"
+}

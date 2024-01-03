@@ -56,6 +56,9 @@ if (!isset($_SESSION['admin'])) {
                   <li class="nav-item waves-effect waves-light" id="click-siswa">
                      <span class="nav-link">Siswa</span>
                   </li>
+                  <li class="nav-item waves-effect waves-light" id="click-absen">
+                     <span class="nav-link">Absen</span>
+                  </li>
                   <li class="nav-item waves-effect waves-light" id="click-cuti">
                      <span class="nav-link">Cuti</span>
                   </li>
@@ -141,6 +144,7 @@ if (!isset($_SESSION['admin'])) {
       clickMenu('click-karyawan', 'karyawan');
       clickMenu('click-kelas', 'kelas');
       clickMenu('click-siswa', 'siswa');
+      clickMenu('click-absen', 'absen');
       clickMenu('click-guru', 'guru');
       clickMenu('click-monitoring', 'monitoring');
       clickMenu('click-rekap-absen', 'rekap-absen');
