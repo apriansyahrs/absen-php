@@ -100,7 +100,6 @@ if (isset($_GET['tambah_siswa'])) {
     }
 }
 
-
 if (isset($_GET['import_siswa'])) {
     $tmp_name = $_FILES['file_import']['tmp_name'];
     $file_name = $_FILES['file_import']['name'];
@@ -155,7 +154,7 @@ if (isset($_GET['tambah_guru'])) {
         return false;
     }
 
-    $query = mysqli_query($conn, "INSERT INTO tb_guru (nip,nama,telegram,profil,password, id_jabatan) VALUES ('$nip','$nama','$telegram','user.png','$password', '$id_jabatan)");
+    $query = mysqli_query($conn, "INSERT INTO tb_guru (nip, nama, telegram, profil, password, id_jabatan) VALUES ('$nip', '$nama', '$telegram', 'user.png', '$password', '$id_jabatan')");
 
     if ($query) {
         echo 'berhasil';
@@ -250,6 +249,7 @@ if (isset($_GET['import_guru'])) {
         echo 'berhasil';
     }
 }
+
 if (isset($_GET['tambah_karyawan'])) {
     $nip = htmlspecialchars($_POST['nip']);
     $nama = htmlspecialchars($_POST['nama']);
@@ -274,6 +274,7 @@ if (isset($_GET['tambah_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['edit_karyawan'])) {
     $id_karyawan = $_POST['id_karyawan'];
     $nip_lama = htmlspecialchars($_POST['nip_lama']);
@@ -301,6 +302,7 @@ if (isset($_GET['edit_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['hapus_karyawan'])) {
     $id_karyawan = $_POST['id_karyawan'];
     $query = mysqli_query($conn, "DELETE FROM tb_karyawan WHERE id_karyawan = '$id_karyawan'");
@@ -311,6 +313,7 @@ if (isset($_GET['hapus_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['import_karyawan'])) {
     $tmp_name = $_FILES['file_import']['tmp_name'];
     $file_name = $_FILES['file_import']['name'];
@@ -343,8 +346,6 @@ if (isset($_GET['import_karyawan'])) {
         echo 'berhasil';
     }
 }
-
-
 
 if (isset($_GET['edit_jadwal_absen_karyawan'])) {
     $senin = $_POST['senin'];
@@ -398,6 +399,7 @@ if (isset($_GET['edit_jadwal_absen_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['custom_jadwal_absen_karyawan'])) {
     $id_karyawan = $_POST['id_karyawan'];
     $senin = $_POST['senin'];
@@ -450,6 +452,7 @@ if (isset($_GET['custom_jadwal_absen_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['edit_custom_jadwal_absen_karyawan'])) {
     $id_j_karyawan = $_POST['id_j_karyawan'];
     $senin = $_POST['senin'];
@@ -503,6 +506,7 @@ if (isset($_GET['edit_custom_jadwal_absen_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['hapus_custom_jadwal_absen_karyawan'])) {
     $id_j_karyawan = $_POST['id_$id_j_karyawan'];
     $query = mysqli_query($conn, "DELETE FROM j_karyawan WHERE id_j_karyawan = '$id_j_karyawan'");
@@ -512,7 +516,6 @@ if (isset($_GET['hapus_custom_jadwal_absen_karyawan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
-
 
 if (isset($_GET['edit_jadwal_absen_guru'])) {
     $senin = $_POST['senin'];
@@ -566,6 +569,7 @@ if (isset($_GET['edit_jadwal_absen_guru'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['custom_jadwal_absen_guru'])) {
     $id_guru = $_POST['id_guru'];
     $senin = $_POST['senin'];
@@ -620,6 +624,7 @@ if (isset($_GET['custom_jadwal_absen_guru'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['edit_custom_jadwal_absen_guru'])) {
     $id_j_guru = $_POST['id_j_guru'];
     $senin = $_POST['senin'];
@@ -673,6 +678,7 @@ if (isset($_GET['edit_custom_jadwal_absen_guru'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['hapus_custom_jadwal_absen_guru'])) {
     $id_j_guru = $_POST['id_j_guru'];
     $query = mysqli_query($conn, "DELETE FROM j_guru WHERE id_j_guru = '$id_j_guru'");
@@ -682,8 +688,6 @@ if (isset($_GET['hapus_custom_jadwal_absen_guru'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
-
-
 
 if (isset($_GET['edit_profil_karyawan'])) {
     $id_karyawan = $_POST['id_karyawan'];
@@ -709,6 +713,7 @@ if (isset($_GET['edit_profil_karyawan'])) {
         }
     }
 }
+
 if (isset($_GET['tambah_jabatan'])) {
     $jabatan = htmlspecialchars($_POST['jabatan']);
 
@@ -719,6 +724,7 @@ if (isset($_GET['tambah_jabatan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['edit_jabatan'])) {
     $id_jabatan = $_POST['id_jabatan_edit'];
     $jabatan = htmlspecialchars($_POST['jabatan_edit']);
@@ -730,6 +736,7 @@ if (isset($_GET['edit_jabatan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['hapus_jabatan'])) {
     $id_jabatan = $_POST['id_jabatan'];
 
@@ -740,6 +747,7 @@ if (isset($_GET['hapus_jabatan'])) {
         echo 'Terdapat kesalahan pada sistem';
     }
 }
+
 if (isset($_GET['tambah_cuti_guru'])) {
     $id_guru = $_POST['id_guru'];
     $keterangan = htmlspecialchars($_POST['keterangan_guru']);
@@ -1063,6 +1071,108 @@ if (isset($_GET['absen_masuk_guru'])) {
 
 
     if ($query1 && $query2 && $query3) {
+        $_SESSION['absen'] = 'masuk';
+        echo 'berhasil';
+    } else {
+        echo 'gagal';
+    }
+}
+
+if (isset($_GET['absen_masuk_siswa'])) {
+    $id_siswa = $_POST['id_siswa'];
+    $m_tanggal = date('d');
+    $m_bulan_tahun = date('m-Y');
+    $token_kelas = $_POST['token_kelas'];
+    $tb_siswa = query("SELECT * FROM tb_siswa WHERE id_siswa = '$id_siswa' LIMIT 1");
+    $id_guru = $tb_siswa['id_guru'];
+
+    $m_alasan = $_POST['m_alasan'];
+    $m_ket = htmlspecialchars($_POST['m_ket']);
+    $m_pada = time();
+    $latitude = htmlspecialchars($_POST['latitude']);
+    $longitude = htmlspecialchars($_POST['longitude']);
+    $token_masuk = $tb_siswa['nis'] . '-' . time();
+
+    $jml_masuk = num_rows("SELECT id_siswa,m_bulan_tahun FROM a_masuk WHERE id_siswa = '$id_siswa' && m_bulan_tahun = '$m_bulan_tahun'");
+
+    if ($jml_masuk == 0) {
+        $query1 = mysqli_query($conn, "INSERT INTO a_masuk (id_guru,id_siswa,`$m_tanggal`,m_tanggal,m_bulan_tahun,token_kelas) VALUES ('$id_guru','$id_siswa','$token_masuk','$m_tanggal','$m_bulan_tahun','$token_kelas')");
+    } else {
+        $query1 = mysqli_query($conn, "UPDATE a_masuk SET `$m_tanggal` = '$token_masuk', m_tanggal = '$m_tanggal' WHERE id_siswa = '$id_siswa' && m_bulan_tahun = '$m_bulan_tahun' && token_kelas = '$token_kelas'");
+    }
+
+    if ($m_alasan == 'terlambat') {
+        $tb_kelas = query("SELECT * FROM tb_kelas WHERE id_guru = '$id_guru' LIMIT 1");
+        $jadwal = $tb_kelas['masuk_akhir'] . ':00';
+        $jam_sekarang = date('H:i:s');
+        $sekarang_jam = date('H', strtotime($jam_sekarang));
+        $akhir_jam = date('H', strtotime($jadwal));
+        $terlambat_jam = $sekarang_jam - $akhir_jam;
+
+        $sekarang_menit = date('i', strtotime($jam_sekarang));
+        $akhir_menit = date('i', strtotime($jadwal));
+
+        if ($sekarang_menit < $akhir_menit) {
+            $terlambat_jam = $terlambat_jam - 1;
+            $terlambat_menit = 60 - $akhir_menit + $sekarang_menit;
+        } else {
+            $terlambat_menit = $sekarang_menit - $akhir_menit;
+        }
+
+        $sekarang_detik = date('s', strtotime($jam_sekarang));
+        $akhir_detik = date('s', strtotime($jadwal));
+
+        $terlambat_detik = $sekarang_detik - $akhir_detik;
+
+        $jam_ke_detik = $terlambat_jam * 3600;
+        $menit_ke_detik = $terlambat_menit * 60;
+        $terlambat = $jam_ke_detik + $menit_ke_detik + $terlambat_detik;
+
+        $query2 = mysqli_query($conn, "INSERT INTO a_masukket (m_alasan,m_ket,terlambat,m_foto,m_pada,latitude,longitude,token_masuk,token_kelas) VALUES ('$m_alasan','$m_ket','$terlambat','','$m_pada','$latitude','$longitude','$token_masuk','$token_kelas')");
+    } else {
+        $query2 = mysqli_query($conn, "INSERT INTO a_masukket (m_alasan,m_ket,m_foto,m_pada,latitude,longitude,token_masuk,token_kelas) VALUES ('$m_alasan','$m_ket','-','$m_pada','$latitude','$longitude','$token_masuk','$token_kelas')");
+    }
+
+    $a_masuk = query("SELECT id_siswa,m_bulan_tahun,token_kelas,hadir,izin,sakit,terlambat FROM a_masuk WHERE id_siswa = '$id_siswa' && m_bulan_tahun = '$m_bulan_tahun' && token_kelas = '$token_kelas'");
+
+    if ($m_alasan == 'hadir') {
+        $jml_alasan = $a_masuk['hadir'] + 1;
+    } elseif ($m_alasan == 'izin') {
+        $jml_alasan = $a_masuk['izin'] + 1;
+    } elseif ($m_alasan == 'sakit') {
+        $jml_alasan = $a_masuk['sakit'] + 1;
+    } elseif ($m_alasan == 'terlambat') {
+        $jml_alasan = $a_masuk['terlambat'] + 1;
+    }
+
+    $query3 = mysqli_query($conn, "UPDATE a_masuk SET `$m_alasan` = '$jml_alasan' WHERE id_siswa = '$id_siswa' && m_bulan_tahun = '$m_bulan_tahun' && token_kelas = '$token_kelas'");
+
+    if ($query1 && $query2 && $query3) {
+        $tb_kelas = query("SELECT id_guru,kelas,notif_absen_telegram,token_kelas FROM tb_kelas WHERE token_kelas = '$token_kelas'");
+        if ($tb_kelas['notif_absen_telegram'] == 'Y') {
+
+            $kelas = $tb_kelas['kelas'];
+            $pada = hari(date('D')) . ', ' . date('d') . ' ' . bulan(date('m')) . ' ' . date('Y');
+
+            $isi_pesan = "<b>Absen masuk kelas $kelas pada $pada</b>\n\n";
+
+            $no = 1;
+            $result = mysqli_query($conn, "SELECT * FROM a_masuk am JOIN tb_siswa s ON am . id_siswa = s . id_siswa WHERE am . m_tanggal = '$m_tanggal' && am . m_bulan_tahun = '$m_bulan_tahun' && am . token_kelas = '$token_kelas'");
+
+            foreach ($result as $a_masuk) {
+                $a_masukket = query("SELECT * FROM a_masukket WHERE token_masuk = '$a_masuk[$m_tanggal]'");
+
+                $isi_pesan .= $no++ . '. ' . $a_masuk['nama_depan'] . ' ' . $a_masuk['nama_belakang'] . ' - ' . date('H:i', $a_masukket['m_pada']) . " ($a_masukket[m_alasan])" . "\n";
+            }
+
+            $tb_guru = query("SELECT id_guru,nama FROM tb_guru WHERE id_guru = '$tb_kelas[id_guru]'");
+            $isi_pesan .= "\n" . $tb_guru['nama'];
+
+            $chat_id = $tb_setelan['chat_id_group'];
+            $token_bot = $tb_setelan['token_bot'];
+            sendMessageTelegram($chat_id, $isi_pesan, $token_bot);
+        }
+        sendBroadcastMasuk($tb_siswa['nis']);
         $_SESSION['absen'] = 'masuk';
         echo 'berhasil';
     } else {

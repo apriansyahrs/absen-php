@@ -83,7 +83,7 @@
                 } else if (data == 'tidak tersedia') {
                     pesan('NIP tidak tersedia', 3000);
                 } else {
-                    pesan(data, 3000);
+                    pesan(data, 30000);
                 }
                 $('#btn-daftar').removeAttr('disabled', 'disabled');
                 $('#btn-daftar').html('Daftarkan');

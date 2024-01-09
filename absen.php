@@ -504,7 +504,7 @@ if (!isset($_SESSION['siswa'])) {
                         } ?>
                      </tr>
                      <!-- <tr>
-                        
+
                      </tr> -->
                   </thead>
                   <tbody class="text-center" id="intervalAbsenMasukMonitoring"></tbody>

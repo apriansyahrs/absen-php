@@ -104,41 +104,62 @@ if (!isset($_SESSION['karyawan'])) {
         </div>
         <?php
         $j_karyawan = query("SELECT * FROM j_karyawan WHERE id_karyawan = {$_SESSION['karyawan']} OR id_karyawan = 0 ORDER BY id_j_karyawan DESC LIMIT 1");
-        if (date('l') == 'Friday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_jumat']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_jumat']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_jumat']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_jumat']));
-        } elseif (date('l') == 'Saturday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_sabtu']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_sabtu']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_sabtu']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_sabtu']));
-        } elseif (date('l') == 'Sunday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_minggu']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_minggu']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_minggu']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_minggu']));
-        } elseif (date('l') == 'Monday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_senin']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_senin']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_senin']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_senin']));
-        } elseif (date('l') == 'Tuesday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_selasa']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_selasa']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_selasa']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_selasa']));
-        } elseif (date('l') == 'Wednesday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_rabu']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_rabu']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_rabu']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_rabu']));
-        } elseif (date('l') == 'Thursday') {
-            $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_kamis']));
-            $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_kamis']));
-            $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_kamis']));
-            $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_kamis']));
+        // if (date('l') == 'Friday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_jumat']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_jumat']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_jumat']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_jumat']));
+        // } elseif (date('l') == 'Saturday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_sabtu']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_sabtu']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_sabtu']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_sabtu']));
+        // } elseif (date('l') == 'Sunday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_minggu']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_minggu']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_minggu']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_minggu']));
+        // } elseif (date('l') == 'Monday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_senin']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_senin']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_senin']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_senin']));
+        // } elseif (date('l') == 'Tuesday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_selasa']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_selasa']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_selasa']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_selasa']));
+        // } elseif (date('l') == 'Wednesday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_rabu']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_rabu']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_rabu']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_rabu']));
+        // } elseif (date('l') == 'Thursday') {
+        //     $masuk_mulai = date('Hi', strtotime($j_karyawan['masuk_mulai_kamis']));
+        //     $masuk_akhir = date('Hi', strtotime($j_karyawan['masuk_akhir_kamis']));
+        //     $pulang_mulai = date('Hi', strtotime($j_karyawan['pulang_mulai_kamis']));
+        //     $pulang_akhir = date('Hi', strtotime($j_karyawan['pulang_akhir_kamis']));
+        // }
+
+        $hari = date('l');
+
+        // Definisikan struktur data jadwal berdasarkan hari dalam seminggu
+        $jadwal_harian = [
+            'Friday' => ['masuk_mulai' => 'masuk_mulai_jumat', 'masuk_akhir' => 'masuk_akhir_jumat', 'pulang_mulai' => 'pulang_mulai_jumat', 'pulang_akhir' => 'pulang_akhir_jumat'],
+            'Saturday' => ['masuk_mulai' => 'masuk_mulai_sabtu', 'masuk_akhir' => 'masuk_akhir_sabtu', 'pulang_mulai' => 'pulang_mulai_sabtu', 'pulang_akhir' => 'pulang_akhir_sabtu'],
+            'Sunday' => ['masuk_mulai' => 'masuk_mulai_minggu', 'masuk_akhir' => 'masuk_akhir_minggu', 'pulang_mulai' => 'pulang_mulai_minggu', 'pulang_akhir' => 'pulang_akhir_minggu'],
+            'Monday' => ['masuk_mulai' => 'masuk_mulai_senin', 'masuk_akhir' => 'masuk_akhir_senin', 'pulang_mulai' => 'pulang_mulai_senin', 'pulang_akhir' => 'pulang_akhir_senin'],
+            'Tuesday' => ['masuk_mulai' => 'masuk_mulai_selasa', 'masuk_akhir' => 'masuk_akhir_selasa', 'pulang_mulai' => 'pulang_mulai_selasa', 'pulang_akhir' => 'pulang_akhir_selasa'],
+            'Wednesday' => ['masuk_mulai' => 'masuk_mulai_rabu', 'masuk_akhir' => 'masuk_akhir_rabu', 'pulang_mulai' => 'pulang_mulai_rabu', 'pulang_akhir' => 'pulang_akhir_rabu'],
+            'Thursday' => ['masuk_mulai' => 'masuk_mulai_kamis', 'masuk_akhir' => 'masuk_akhir_kamis', 'pulang_mulai' => 'pulang_mulai_kamis', 'pulang_akhir' => 'pulang_akhir_kamis'],
+        ];
+
+        if (isset($jadwal_harian[$hari])) {
+            $jadwal = $jadwal_harian[$hari];
+            $masuk_mulai = date('Hi', strtotime($j_karyawan[$jadwal['masuk_mulai']])) ?? '';
+            $masuk_akhir = date('Hi', strtotime($j_karyawan[$jadwal['masuk_akhir']])) ?? '';
+            $pulang_mulai = date('Hi', strtotime($j_karyawan[$jadwal['pulang_mulai']])) ?? '';
+            $pulang_akhir = date('Hi', strtotime($j_karyawan[$jadwal['pulang_akhir']])) ?? '';
         }
 
         $waktu_sekarang = date('Hi');
@@ -177,6 +198,9 @@ if (!isset($_SESSION['karyawan'])) {
             return num_rows("SELECT * FROM a_pulang_karyawan WHERE `$tanggal` = '$row_tgl'");
         } ?>
 
+
+
+
         <div class="jumbotron jumbotron-fluid menu-utama">
             <div class="container">
                 <div class="info-user">
@@ -205,39 +229,243 @@ if (!isset($_SESSION['karyawan'])) {
                                             echo 'Anda sedang dalam masa Cuti';
                                         }
                                     } else {
-                                        if (date('l') !== "Sunday") {
-                                            if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
-                                                if (absenMasuk() == 0) {
-                                                    echo 'Sekarang waktunya melakukan absen masuk';
-                                                } else {
-                                                    echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
-                                                }
-                                            } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
-                                                if (absenMasuk() == 0) {
-                                                    echo 'Absen masuk sudah berakhir pada jam ' . $j_karyawan['masuk_akhir'] . ' yang lalu';
-                                                } else {
-                                                    echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
-                                                }
-                                            } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
-                                                if (absenMasuk() == 0) {
-                                                    echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
-                                                } elseif (absenPulang() == 0) {
-                                                    echo 'Sekarang waktunya melakukan absen pulang';
-                                                } else {
-                                                    echo 'Anda sudah melakukan absen pulang hari ini';
-                                                }
-                                            } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
-                                                if (absenPulang() == 0) {
-                                                    if (date('l') == 'Friday') {
-                                                        echo 'Absen pulang sudah berakhir pada jam ' . $j_karyawan['pulang_akhir_jumat'] . ' yang lalu';
+                                        if (date('l') == "Monday") {
+                                            if ($j_karyawan['senin'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
                                                     } else {
-                                                        echo 'Absen pulang sudah berakhir pada jam ' . $j_karyawan['pulang_akhir'] . ' yang lalu';
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
                                                     }
                                                 } else {
-                                                    echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    echo 'Belum waktunya melakukan absen masuk';
                                                 }
                                             } else {
-                                                echo 'Belum waktunya melakukan absen masuk';
+                                                echo 'Hari ini libur!';
+                                            }
+                                        } elseif (date('l') == "Tuesday") {
+                                            if ($j_karyawan['selasa'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } else {
+                                                    echo 'Belum waktunya melakukan absen masuk';
+                                                }
+                                            } else {
+                                                echo 'Hari ini libur!';
+                                            }
+                                        } elseif (date('l') == "Wednesday") {
+                                            if ($j_karyawan['rabu'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } else {
+                                                    echo 'Belum waktunya melakukan absen masuk';
+                                                }
+                                            } else {
+                                                echo 'Hari ini libur!';
+                                            }
+                                        } elseif (date('l') == "Thursday") {
+                                            if ($j_karyawan['kamis'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } else {
+                                                    echo 'Belum waktunya melakukan absen masuk';
+                                                }
+                                            } else {
+                                                echo 'Hari ini libur!';
+                                            }
+                                        } elseif (date('l') == "Friday") {
+                                            if ($j_karyawan['jumat'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } else {
+                                                    echo 'Belum waktunya melakukan absen masuk';
+                                                }
+                                            } else {
+                                                echo 'Hari ini libur!';
+                                            }
+                                        } elseif (date('l') == "Saturday") {
+                                            if ($j_karyawan['sabtu'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } else {
+                                                    echo 'Belum waktunya melakukan absen masuk';
+                                                }
+                                            } else {
+                                                echo 'Hari ini libur!';
+                                            }
+                                        } elseif (date('l') == "Sunday") {
+                                            if ($j_karyawan['minggu'] !== '') {
+                                                if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen masuk';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                                    if (absenMasuk() == 0) {
+                                                        echo 'Anda tidak melakukan absen masuk, maka tidak bisa melakukan absen pulang hari ini';
+                                                    } elseif (absenPulang() == 0) {
+                                                        echo 'Sekarang waktunya melakukan absen pulang';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                                    if (absenPulang() == 0) {
+                                                        echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
+                                                    } else {
+                                                        echo 'Anda sudah melakukan absen pulang hari ini';
+                                                    }
+                                                } else {
+                                                    echo 'Belum waktunya melakukan absen masuk';
+                                                }
+                                            } else {
+                                                echo 'Hari ini libur!';
                                             }
                                         } else {
                                             echo 'Hari ini libur!';
@@ -271,54 +499,396 @@ if (!isset($_SESSION['karyawan'])) {
                                     Cuti
                                 </button>
                                 <?php } else {
-                                if (date('l') !== "Sunday") {
-                                    if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
-                                        if (absenMasuk() == 0) { ?>
-                                            <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                if (date('l') == "Monday") {
+                                    if ($j_karyawan['senin'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
                                                 Masuk
-                                            </button>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
-                                                <i class="la la-check"></i>
-                                            </button>
-                                        <?php }
-                                    } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
-                                        if (absenMasuk() == 0) { ?>
-                                            <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
-                                                Masuk
-                                            </button>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
-                                                <i class="la la-check"></i>
-                                            </button>
-                                        <?php }
-                                    } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
-                                        if (absenMasuk() == 0) { ?>
-                                            <button type="button" class="btn btn-absen danger" disabled="disabled">
-                                                <i class="la la-times"></i>
-                                            </button>
-                                        <?php } elseif (absenPulang() == 0) { ?>
-                                            <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
-                                                Pulang
-                                            </button>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
-                                                <i class="la la-check"></i>
-                                            </button>
-                                        <?php }
-                                    } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
-                                        if (absenPulang() == 0) { ?>
-                                            <button type="button" class="btn btn-absen danger" disabled="disabled">
-                                                <i class="la la-times"></i>
-                                            </button>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-absen danger" disabled="disabled">
-                                                <i class="la la-check"></i>
                                             </button>
                                         <?php }
                                     } else { ?>
-                                        <button type="button" class="btn btn-absen warning" disabled="disabled">
-                                            Masuk
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    <?php }
+                                } elseif (date('l') == "Tuesday") {
+                                    if ($j_karyawan['selasa'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
+                                                Masuk
+                                            </button>
+                                        <?php }
+                                    } else { ?>
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    <?php }
+                                } elseif (date('l') == "Wednesday") {
+                                    if ($j_karyawan['rabu'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
+                                                Masuk
+                                            </button>
+                                        <?php }
+                                    } else { ?>
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    <?php }
+                                } elseif (date('l') == "Thursday") {
+                                    if ($j_karyawan['kamis'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
+                                                Masuk
+                                            </button>
+                                        <?php }
+                                    } else { ?>
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    <?php }
+                                } elseif (date('l') == "Friday") {
+                                    if ($j_karyawan['jumat'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
+                                                Masuk
+                                            </button>
+                                        <?php }
+                                    } else { ?>
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    <?php }
+                                } elseif (date('l') == "Saturday") {
+                                    if ($j_karyawan['sabtu'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
+                                                Masuk
+                                            </button>
+                                        <?php }
+                                    } else { ?>
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    <?php }
+                                } elseif (date('l') == "Sunday") {
+                                    if ($j_karyawan['minggu'] !== '') {
+                                        if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen warning waves-effect waves-warning infinite animated pulse" id="click-absen-masuk-terlambat">
+                                                    Masuk
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen warning infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_mulai && $waktu_sekarang < $pulang_akhir) {
+                                            if (absenMasuk() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } elseif (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger waves-effect waves-danger infinite animated pulse" id="click-absen-pulang">
+                                                    Pulang
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger infinite animated pulse" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
+                                            if (absenPulang() == 0) { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-times"></i>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                                    <i class="la la-check"></i>
+                                                </button>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" class="btn btn-absen warning" disabled="disabled">
+                                                Masuk
+                                            </button>
+                                        <?php }
+                                    } else { ?>
+                                        <button type="button" class="btn btn-absen danger" disabled="disabled">
+                                            <i class="la la-calendar"></i>
                                         </button>
                                     <?php }
                                 } else { ?>
@@ -373,7 +943,7 @@ if (!isset($_SESSION['karyawan'])) {
                                             <div class="row d-flex justify-content-center mx-1">
                                                 <div class="col-md-6">
                                                     <div class="card-info-waktu waves-effect waves-light">
-                                                        <div class="waktu-mulai" data-tooltip="tooltip" title="Absen masuk dilakukan pada saat atau sesudah jam <?= $j_karyawan['masuk_mulai'] ?>">
+                                                        <div class="waktu-mulai" data-tooltip="tooltip" title="Absen masuk dilakukan pada saat atau sesudah jam <?= $masuk_mulai ?>">
                                                             Masuk Mulai <br> <span>
                                                                 <?php
                                                                 if (date('l') == 'Friday') {
@@ -398,7 +968,7 @@ if (!isset($_SESSION['karyawan'])) {
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="card-info-waktu waves-effect waves-light">
-                                                        <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen masuk pada jam <?= $j_karyawan['masuk_akhir'] ?>">
+                                                        <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen masuk pada jam <?= $masuk_akhir ?>">
                                                             Masuk Akhir <br> <span>
                                                                 <?php
                                                                 if (date('l') == 'Friday') {
@@ -453,7 +1023,7 @@ if (!isset($_SESSION['karyawan'])) {
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="card-info-waktu waves-effect waves-light">
-                                                        <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen pulang pada jam <?= $j_karyawan['pulang_akhir'] ?>">
+                                                        <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen pulang pada jam <?= $pulang_akhir ?>">
                                                             Pulang Akhir <br>
                                                             <span>
                                                                 <?php
@@ -743,17 +1313,10 @@ if (!isset($_SESSION['karyawan'])) {
 
         const date = new Date;
 
-        if (date.getDay() == 5) {
-            var masuk_mulai = '<?= $j_karyawan['masuk_mulai'] ?>:00';
-            masuk_akhir = '<?= $j_karyawan['masuk_akhir'] ?>:00';
-            pulang_mulai = '<?= $j_karyawan['pulang_mulai_jumat'] ?>:00';
-            pulang_akhir = '<?= $j_karyawan['pulang_akhir_jumat'] ?>:00';
-        } else {
-            var masuk_mulai = '<?= $j_karyawan['masuk_mulai'] ?>:00';
-            masuk_akhir = '<?= $j_karyawan['masuk_akhir'] ?>:00';
-            pulang_mulai = '<?= $j_karyawan['pulang_mulai'] ?>:00';
-            pulang_akhir = '<?= $j_karyawan['pulang_akhir'] ?>:00';
-        }
+        var masuk_mulai = '<?= $masuk_mulai ?>:00';
+        masuk_akhir = '<?= $masuk_akhir ?>:00';
+        pulang_mulai = '<?= $pulang_mulai ?>:00';
+        pulang_akhir = '<?= $pulang_akhir ?>:00';
 
         setInterval(function() {
             $.ajax({

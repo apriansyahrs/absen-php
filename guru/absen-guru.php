@@ -3,41 +3,25 @@ require "../config.php";
 $j_guru = query("SELECT * FROM j_guru WHERE id_guru = {$_SESSION['guru']} OR id_guru = 0 ORDER BY id_j_guru DESC LIMIT 1");
 
 
-if (date('l') == 'Friday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_jumat']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_jumat']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_jumat']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_jumat']));
-} elseif (date('l') == 'Saturday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_sabtu']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_sabtu']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_sabtu']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_sabtu']));
-} elseif (date('l') == 'Sunday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_minggu']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_minggu']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_minggu']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_minggu']));
-} elseif (date('l') == 'Monday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_senin']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_senin']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_senin']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_senin']));
-} elseif (date('l') == 'Tuesday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_selasa']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_selasa']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_selasa']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_selasa']));
-} elseif (date('l') == 'Wednesday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_rabu']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_rabu']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_rabu']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_rabu']));
-} elseif (date('l') == 'Thursday') {
-    $masuk_mulai = date('Hi', strtotime($j_guru['masuk_mulai_kamis']));
-    $masuk_akhir = date('Hi', strtotime($j_guru['masuk_akhir_kamis']));
-    $pulang_mulai = date('Hi', strtotime($j_guru['pulang_mulai_kamis']));
-    $pulang_akhir = date('Hi', strtotime($j_guru['pulang_akhir_kamis']));
+$hari = date('l');
+
+// Definisikan struktur data jadwal berdasarkan hari dalam seminggu
+$jadwal_harian = [
+    'Friday' => ['masuk_mulai' => 'masuk_mulai_jumat', 'masuk_akhir' => 'masuk_akhir_jumat', 'pulang_mulai' => 'pulang_mulai_jumat', 'pulang_akhir' => 'pulang_akhir_jumat'],
+    'Saturday' => ['masuk_mulai' => 'masuk_mulai_sabtu', 'masuk_akhir' => 'masuk_akhir_sabtu', 'pulang_mulai' => 'pulang_mulai_sabtu', 'pulang_akhir' => 'pulang_akhir_sabtu'],
+    'Sunday' => ['masuk_mulai' => 'masuk_mulai_minggu', 'masuk_akhir' => 'masuk_akhir_minggu', 'pulang_mulai' => 'pulang_mulai_minggu', 'pulang_akhir' => 'pulang_akhir_minggu'],
+    'Monday' => ['masuk_mulai' => 'masuk_mulai_senin', 'masuk_akhir' => 'masuk_akhir_senin', 'pulang_mulai' => 'pulang_mulai_senin', 'pulang_akhir' => 'pulang_akhir_senin'],
+    'Tuesday' => ['masuk_mulai' => 'masuk_mulai_selasa', 'masuk_akhir' => 'masuk_akhir_selasa', 'pulang_mulai' => 'pulang_mulai_selasa', 'pulang_akhir' => 'pulang_akhir_selasa'],
+    'Wednesday' => ['masuk_mulai' => 'masuk_mulai_rabu', 'masuk_akhir' => 'masuk_akhir_rabu', 'pulang_mulai' => 'pulang_mulai_rabu', 'pulang_akhir' => 'pulang_akhir_rabu'],
+    'Thursday' => ['masuk_mulai' => 'masuk_mulai_kamis', 'masuk_akhir' => 'masuk_akhir_kamis', 'pulang_mulai' => 'pulang_mulai_kamis', 'pulang_akhir' => 'pulang_akhir_kamis'],
+];
+
+if (isset($jadwal_harian[$hari])) {
+    $jadwal = $jadwal_harian[$hari];
+    $masuk_mulai = date('Hi', strtotime($j_guru[$jadwal['masuk_mulai']])) ?? '';
+    $masuk_akhir = date('Hi', strtotime($j_guru[$jadwal['masuk_akhir']])) ?? '';
+    $pulang_mulai = date('Hi', strtotime($j_guru[$jadwal['pulang_mulai']])) ?? '';
+    $pulang_akhir = date('Hi', strtotime($j_guru[$jadwal['pulang_akhir']])) ?? '';
 }
 
 $waktu_sekarang = date('Hi');
@@ -194,7 +178,9 @@ function absenPulang()
                             echo 'Anda sedang dalam masa Cuti';
                         }
                     } else {
-                        if (date('l') !== "Sunday") {
+                        if (date('l') === "Saturday" || date('l') === "Sunday") {
+                            echo 'Hari ini libur!';
+                        } else {
                             if ($waktu_sekarang >= $masuk_mulai && $waktu_sekarang < $masuk_akhir) {
                                 if (absenMasuk() == 0) {
                                     echo 'Sekarang waktunya melakukan absen masuk';
@@ -203,7 +189,7 @@ function absenPulang()
                                 }
                             } elseif ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
                                 if (absenMasuk() == 0) {
-                                    echo 'Absen masuk sudah berakhir pada jam ' . $j_guru['masuk_akhir'] . ' yang lalu';
+                                    echo 'Absen masuk sudah berakhir pada jam ' . $masuk_akhir . ' yang lalu';
                                 } else {
                                     echo 'Anda sudah melakukan absen masuk hari ini, tunggu absen pulang selanjutnya';
                                 }
@@ -217,19 +203,13 @@ function absenPulang()
                                 }
                             } elseif ($waktu_sekarang >= $pulang_akhir && $waktu_sekarang < '2400') {
                                 if (absenPulang() == 0) {
-                                    if (date('l') == 'Friday') {
-                                        echo 'Absen pulang sudah berakhir pada jam ' . $j_guru['pulang_akhir_jumat'] . ' yang lalu';
-                                    } else {
-                                        echo 'Absen pulang sudah berakhir pada jam ' . $j_guru['pulang_akhir'] . ' yang lalu';
-                                    }
+                                    echo 'Absen pulang sudah berakhir pada jam ' . $pulang_akhir . ' yang lalu';
                                 } else {
                                     echo 'Anda sudah melakukan absen pulang hari ini';
                                 }
                             } else {
                                 echo 'Belum waktunya melakukan absen masuk';
                             }
-                        } else {
-                            echo 'Hari ini libur!';
                         }
                     }
                 }
@@ -262,32 +242,32 @@ function absenPulang()
                         <div class="row d-flex justify-content-center mx-1">
                             <div class="col-md-6">
                                 <div class="card-info-waktu waves-effect waves-light">
-                                    <div class="waktu-mulai" data-tooltip="tooltip" title="Absen masuk dilakukan pada saat atau sesudah jam <?= $j_guru['masuk_mulai'] ?>">
-                                        Masuk Mulai <br> <span>                                        <?php
-                                            if (date('l') == 'Friday') {
-                                                echo $j_guru['masuk_mulai_jumat'];
-                                            } elseif (date('l') == 'Saturday') {
-                                                echo $j_guru['masuk_mulai_sabtu'];
-                                            } elseif (date('l') == 'Sunday') {
-                                                echo $j_guru['masuk_mulai_minggu'];
-                                            } elseif (date('l') == 'Monday') {
-                                                echo $j_guru['masuk_mulai_senin'];
-                                            } elseif (date('l') == 'Tuesday') {
-                                                echo $j_guru['masuk_mulai_selasa'];
-                                            } elseif (date('l') == 'Wednesday') {
-                                                echo $j_guru['masuk_mulai_rabu'];
-                                            } elseif (date('l') == 'Thursday') {
-                                                echo $j_guru['masuk_mulai_kamis'];
-                                            }
-                                            ?></span>
+                                    <div class="waktu-mulai" data-tooltip="tooltip" title="Absen masuk dilakukan pada saat atau sesudah jam <?= $masuk_mulai ?>">
+                                        Masuk Mulai <br> <span> <?php
+                                                                if (date('l') == 'Friday') {
+                                                                    echo $j_guru['masuk_mulai_jumat'];
+                                                                } elseif (date('l') == 'Saturday') {
+                                                                    echo $j_guru['masuk_mulai_sabtu'];
+                                                                } elseif (date('l') == 'Sunday') {
+                                                                    echo $j_guru['masuk_mulai_minggu'];
+                                                                } elseif (date('l') == 'Monday') {
+                                                                    echo $j_guru['masuk_mulai_senin'];
+                                                                } elseif (date('l') == 'Tuesday') {
+                                                                    echo $j_guru['masuk_mulai_selasa'];
+                                                                } elseif (date('l') == 'Wednesday') {
+                                                                    echo $j_guru['masuk_mulai_rabu'];
+                                                                } elseif (date('l') == 'Thursday') {
+                                                                    echo $j_guru['masuk_mulai_kamis'];
+                                                                }
+                                                                ?></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-info-waktu waves-effect waves-light">
-                                    <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen masuk pada jam <?= $j_guru['masuk_akhir'] ?>">
+                                    <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen masuk pada jam <?= $masuk_akhir ?>">
                                         Masuk Akhir <br> <span>
-                                        <?php
+                                            <?php
                                             if (date('l') == 'Friday') {
                                                 echo $j_guru['masuk_akhir_jumat'];
                                             } elseif (date('l') == 'Saturday') {
@@ -304,7 +284,7 @@ function absenPulang()
                                                 echo $j_guru['masuk_akhir_kamis'];
                                             }
                                             ?>
-                                            </span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -343,7 +323,7 @@ function absenPulang()
                                     <div class="waktu-akhir" data-tooltip="tooltip" title="Batas waktu melakukan absen pulang pada jam <?= $j_guru['pulang_akhir'] ?>">
                                         Pulang Akhir <br>
                                         <span>
-                                        <?php
+                                            <?php
                                             if (date('l') == 'Friday') {
                                                 echo $j_guru['pulang_akhir_jumat'];
                                             } elseif (date('l') == 'Saturday') {
@@ -579,17 +559,10 @@ if ($waktu_sekarang >= $masuk_akhir && $waktu_sekarang < $pulang_mulai) {
 
     const date = new Date;
 
-    if (date.getDay() == 5) {
-        var masuk_mulai = '<?= $j_guru['masuk_mulai'] ?>:00';
-        masuk_akhir = '<?= $j_guru['masuk_akhir'] ?>:00';
-        pulang_mulai = '<?= $j_guru['pulang_mulai_jumat'] ?>:00';
-        pulang_akhir = '<?= $j_guru['pulang_akhir_jumat'] ?>:00';
-    } else {
-        var masuk_mulai = '<?= $j_guru['masuk_mulai'] ?>:00';
-        masuk_akhir = '<?= $j_guru['masuk_akhir'] ?>:00';
-        pulang_mulai = '<?= $j_guru['pulang_mulai'] ?>:00';
-        pulang_akhir = '<?= $j_guru['pulang_akhir'] ?>:00';
-    }
+    var masuk_mulai = '<?= $masuk_mulai ?>:00';
+    masuk_akhir = '<?= $masuk_akhir ?>:00';
+    pulang_mulai = '<?= $pulang_mulai ?>:00';
+    pulang_akhir = '<?= $pulang_akhir ?>:00';
 
     setInterval(function() {
         $.ajax({

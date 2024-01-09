@@ -123,7 +123,7 @@ $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
             var lat1 = latitude;
             var lon1 = longitude;
 
-            var R = 6371; // km 
+            var R = 6371; // km
             //has a problem with the .toRad() method below.
             var x1 = lat2 - lat1;
             var dLat = x1.toRad();
@@ -251,7 +251,7 @@ $('#click-absen-pulang').click(function () {
                 var lat1 = latitude;
                 var lon1 = longitude;
 
-                var R = 6371; // km 
+                var R = 6371; // km
                 //has a problem with the .toRad() method below.
                 var x1 = lat2 - lat1;
                 var dLat = x1.toRad();

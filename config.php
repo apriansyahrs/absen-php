@@ -2,6 +2,7 @@
 // local
 $hostname = '127.0.0.1';
 $username = 'root';
+// $password = 'B1sm1ll@h';
 $password = '';
 $database = 'absensi_v4';
 

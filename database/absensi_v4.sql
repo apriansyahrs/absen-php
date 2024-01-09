@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 28, 2022 at 04:02 PM
--- Server version: 5.7.33
--- PHP Version: 7.3.33
+-- Host: 127.0.0.1
+-- Generation Time: Jan 05, 2024 at 08:55 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -126,6 +127,13 @@ CREATE TABLE `a_masukket_karyawan` (
   `token_masuk` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `a_masukket_karyawan`
+--
+
+INSERT INTO `a_masukket_karyawan` (`id_masukket`, `m_alasan`, `m_ket`, `terlambat`, `m_foto`, `m_pada`, `latitude`, `longitude`, `token_masuk`) VALUES
+(1, 'hadir', 'Hadir', NULL, 'Ag19740801-1704436890.png', 1704436890, '-6.6989111', '108.5439621', 'Ag19740801-1704436890');
+
 -- --------------------------------------------------------
 
 --
@@ -223,6 +231,13 @@ CREATE TABLE `a_masuk_karyawan` (
   `m_tanggal` varchar(2) DEFAULT NULL,
   `m_bulan_tahun` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `a_masuk_karyawan`
+--
+
+INSERT INTO `a_masuk_karyawan` (`id_absen`, `id_karyawan`, `01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `25`, `26`, `27`, `28`, `29`, `30`, `31`, `hadir`, `izin`, `sakit`, `terlambat`, `cuti`, `m_tanggal`, `m_bulan_tahun`) VALUES
+(1, 18, NULL, NULL, NULL, NULL, 'Ag19740801-1704436890', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, '05', '01-2024');
 
 -- --------------------------------------------------------
 
@@ -425,15 +440,6 @@ CREATE TABLE `jadwal_libur` (
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `jadwal_libur`
---
-
-INSERT INTO `jadwal_libur` (`id`, `tanggal`, `keterangan`) VALUES
-(24, '2022-05-02', 'Hari Raya Idul Fitri'),
-(25, '2022-05-03', 'Hari Raya Idul Fitri'),
-(26, '2022-05-04', 'Hari Raya Idul Fitri');
-
 -- --------------------------------------------------------
 
 --
@@ -442,20 +448,50 @@ INSERT INTO `jadwal_libur` (`id`, `tanggal`, `keterangan`) VALUES
 
 CREATE TABLE `j_guru` (
   `id_j_guru` int(11) NOT NULL,
-  `masuk_mulai` varchar(16) NOT NULL,
-  `masuk_akhir` varchar(16) NOT NULL,
-  `pulang_mulai` varchar(16) NOT NULL,
-  `pulang_akhir` varchar(16) NOT NULL,
-  `pulang_mulai_jumat` varchar(16) NOT NULL,
-  `pulang_akhir_jumat` varchar(16) NOT NULL
+  `senin` varchar(1) NOT NULL,
+  `masuk_mulai_senin` varchar(16) DEFAULT NULL,
+  `masuk_akhir_senin` varchar(16) DEFAULT NULL,
+  `pulang_mulai_senin` varchar(16) DEFAULT NULL,
+  `pulang_akhir_senin` varchar(16) DEFAULT NULL,
+  `selasa` varchar(1) NOT NULL,
+  `masuk_mulai_selasa` varchar(16) DEFAULT NULL,
+  `masuk_akhir_selasa` varchar(16) DEFAULT NULL,
+  `pulang_mulai_selasa` varchar(16) DEFAULT NULL,
+  `pulang_akhir_selasa` varchar(16) DEFAULT NULL,
+  `rabu` varchar(1) NOT NULL,
+  `masuk_mulai_rabu` varchar(16) DEFAULT NULL,
+  `masuk_akhir_rabu` varchar(16) DEFAULT NULL,
+  `pulang_mulai_rabu` varchar(16) DEFAULT NULL,
+  `pulang_akhir_rabu` varchar(16) DEFAULT NULL,
+  `kamis` varchar(1) NOT NULL,
+  `masuk_mulai_kamis` varchar(16) DEFAULT NULL,
+  `masuk_akhir_kamis` varchar(16) DEFAULT NULL,
+  `pulang_mulai_kamis` varchar(16) DEFAULT NULL,
+  `pulang_akhir_kamis` varchar(16) DEFAULT NULL,
+  `jumat` varchar(1) NOT NULL,
+  `masuk_mulai_jumat` varchar(16) DEFAULT NULL,
+  `masuk_akhir_jumat` varchar(16) DEFAULT NULL,
+  `pulang_mulai_jumat` varchar(16) DEFAULT NULL,
+  `pulang_akhir_jumat` varchar(16) DEFAULT NULL,
+  `sabtu` varchar(1) NOT NULL,
+  `masuk_mulai_sabtu` varchar(16) DEFAULT NULL,
+  `masuk_akhir_sabtu` varchar(16) DEFAULT NULL,
+  `pulang_mulai_sabtu` varchar(16) DEFAULT NULL,
+  `pulang_akhir_sabtu` varchar(16) DEFAULT NULL,
+  `minggu` varchar(1) NOT NULL,
+  `masuk_mulai_minggu` varchar(16) DEFAULT NULL,
+  `masuk_akhir_minggu` varchar(16) DEFAULT NULL,
+  `pulang_mulai_minggu` varchar(16) DEFAULT NULL,
+  `pulang_akhir_minggu` varchar(16) DEFAULT NULL,
+  `id_guru` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `j_guru`
 --
 
-INSERT INTO `j_guru` (`id_j_guru`, `masuk_mulai`, `masuk_akhir`, `pulang_mulai`, `pulang_akhir`, `pulang_mulai_jumat`, `pulang_akhir_jumat`) VALUES
-(1, '08:00', '23:00', '13:00', '14:00', '11:00', '12:00');
+INSERT INTO `j_guru` (`id_j_guru`, `senin`, `masuk_mulai_senin`, `masuk_akhir_senin`, `pulang_mulai_senin`, `pulang_akhir_senin`, `selasa`, `masuk_mulai_selasa`, `masuk_akhir_selasa`, `pulang_mulai_selasa`, `pulang_akhir_selasa`, `rabu`, `masuk_mulai_rabu`, `masuk_akhir_rabu`, `pulang_mulai_rabu`, `pulang_akhir_rabu`, `kamis`, `masuk_mulai_kamis`, `masuk_akhir_kamis`, `pulang_mulai_kamis`, `pulang_akhir_kamis`, `jumat`, `masuk_mulai_jumat`, `masuk_akhir_jumat`, `pulang_mulai_jumat`, `pulang_akhir_jumat`, `sabtu`, `masuk_mulai_sabtu`, `masuk_akhir_sabtu`, `pulang_mulai_sabtu`, `pulang_akhir_sabtu`, `minggu`, `masuk_mulai_minggu`, `masuk_akhir_minggu`, `pulang_mulai_minggu`, `pulang_akhir_minggu`, `id_guru`) VALUES
+(1, '1', '07:00', '07:30', '15:00', '17:00', '1', '07:00', '07:30', '15:00', '17:00', '1', '07:00', '07:30', '15:00', '17:00', '1', '07:00', '07:30', '15:00', '17:00', '1', '07:00', '07:30', '11:30', '14:00', '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -465,20 +501,55 @@ INSERT INTO `j_guru` (`id_j_guru`, `masuk_mulai`, `masuk_akhir`, `pulang_mulai`,
 
 CREATE TABLE `j_karyawan` (
   `id_j_karyawan` int(11) NOT NULL,
-  `masuk_mulai` varchar(16) NOT NULL,
-  `masuk_akhir` varchar(16) NOT NULL,
-  `pulang_mulai` varchar(16) NOT NULL,
-  `pulang_akhir` varchar(16) NOT NULL,
-  `pulang_mulai_jumat` varchar(16) NOT NULL,
-  `pulang_akhir_jumat` varchar(16) NOT NULL DEFAULT ''
+  `senin` varchar(1) NOT NULL,
+  `masuk_mulai_senin` varchar(16) DEFAULT NULL,
+  `masuk_akhir_senin` varchar(16) DEFAULT NULL,
+  `pulang_mulai_senin` varchar(16) DEFAULT NULL,
+  `pulang_akhir_senin` varchar(16) DEFAULT NULL,
+  `selasa` varchar(1) NOT NULL,
+  `masuk_mulai_selasa` varchar(16) DEFAULT NULL,
+  `masuk_akhir_selasa` varchar(16) DEFAULT NULL,
+  `pulang_mulai_selasa` varchar(16) DEFAULT NULL,
+  `pulang_akhir_selasa` varchar(16) DEFAULT NULL,
+  `rabu` varchar(1) NOT NULL,
+  `masuk_mulai_rabu` varchar(16) DEFAULT NULL,
+  `masuk_akhir_rabu` varchar(16) DEFAULT NULL,
+  `pulang_mulai_rabu` varchar(16) DEFAULT NULL,
+  `pulang_akhir_rabu` varchar(16) DEFAULT NULL,
+  `kamis` varchar(1) NOT NULL,
+  `masuk_mulai_kamis` varchar(16) DEFAULT NULL,
+  `masuk_akhir_kamis` varchar(16) DEFAULT NULL,
+  `pulang_mulai_kamis` varchar(16) DEFAULT NULL,
+  `pulang_akhir_kamis` varchar(16) DEFAULT NULL,
+  `jumat` varchar(1) NOT NULL,
+  `masuk_mulai_jumat` varchar(16) DEFAULT NULL,
+  `masuk_akhir_jumat` varchar(16) DEFAULT NULL,
+  `pulang_mulai_jumat` varchar(16) DEFAULT NULL,
+  `pulang_akhir_jumat` varchar(16) DEFAULT NULL,
+  `sabtu` varchar(1) NOT NULL,
+  `masuk_mulai_sabtu` varchar(16) DEFAULT NULL,
+  `masuk_akhir_sabtu` varchar(16) DEFAULT NULL,
+  `pulang_mulai_sabtu` varchar(16) DEFAULT NULL,
+  `pulang_akhir_sabtu` varchar(16) DEFAULT NULL,
+  `minggu` varchar(1) NOT NULL,
+  `masuk_mulai_minggu` varchar(16) DEFAULT NULL,
+  `masuk_akhir_minggu` varchar(16) DEFAULT NULL,
+  `pulang_mulai_minggu` varchar(16) DEFAULT NULL,
+  `pulang_akhir_minggu` varchar(16) DEFAULT NULL,
+  `id_karyawan` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `j_karyawan`
 --
 
-INSERT INTO `j_karyawan` (`id_j_karyawan`, `masuk_mulai`, `masuk_akhir`, `pulang_mulai`, `pulang_akhir`, `pulang_mulai_jumat`, `pulang_akhir_jumat`) VALUES
-(1, '06:00', '06:50', '13:00', '15:00', '10:30', '14:00');
+INSERT INTO `j_karyawan` (`id_j_karyawan`, `senin`, `masuk_mulai_senin`, `masuk_akhir_senin`, `pulang_mulai_senin`, `pulang_akhir_senin`, `selasa`, `masuk_mulai_selasa`, `masuk_akhir_selasa`, `pulang_mulai_selasa`, `pulang_akhir_selasa`, `rabu`, `masuk_mulai_rabu`, `masuk_akhir_rabu`, `pulang_mulai_rabu`, `pulang_akhir_rabu`, `kamis`, `masuk_mulai_kamis`, `masuk_akhir_kamis`, `pulang_mulai_kamis`, `pulang_akhir_kamis`, `jumat`, `masuk_mulai_jumat`, `masuk_akhir_jumat`, `pulang_mulai_jumat`, `pulang_akhir_jumat`, `sabtu`, `masuk_mulai_sabtu`, `masuk_akhir_sabtu`, `pulang_mulai_sabtu`, `pulang_akhir_sabtu`, `minggu`, `masuk_mulai_minggu`, `masuk_akhir_minggu`, `pulang_mulai_minggu`, `pulang_akhir_minggu`, `id_karyawan`) VALUES
+(1, '1', '05:00', '07:00', '15:00', '17:00', '1', '05:00', '07:00', '15:00', '17:00', '1', '05:00', '07:00', '15:00', '17:00', '1', '05:00', '07:00', '15:00', '17:00', '1', '05:00', '07:00', '12:30', '17:00', '', '', '', '', '', '', '', '', '', '', 0),
+(2, '', '', '', '', '', '1', '18:00', '19:00', '07:00', '07:30', '1', '18:00', '19:00', '07:00', '07:30', '', '', '', '', '', '1', '05:00', '07:00', '19:00', '20:00', '1', '05:00', '07:00', '19:00', '20:00', '1', '14:00', '15:00', '22:00', '23:00', 18),
+(3, '1', '18:00', '19:00', '07:00', '07:30', '', '', '', '', '', '1', '05:00', '07:00', '19:00', '20:00', '1', '05:00', '07:00', '19:00', '20:00', '', '', '', '', '', '1', '18:00', '19:00', '07:00', '08:00', '', '', '', '', '', 27),
+(4, '1', '18:00', '19:00', '07:00', '07:30', '', '', '', '', '', '1', '05:00', '07:00', '19:00', '20:00', '1', '05:00', '07:00', '19:00', '20:00', '', '', '', '', '', '1', '18:00', '19:00', '07:00', '08:00', '1', '21:30', '22:00', '07:00', '08:00', 27),
+(5, '1', '05:00', '07:00', '15:00', '17:00', '1', '05:00', '07:00', '15:00', '17:00', '', '', '', '', '', '1', '18:00', '19:00', '07:00', '08:00', '1', '18:00', '19:00', '19:00', '20:00', '', '', '', '', '', '1', '05:00', '07:00', '15:00', '16:00', 23),
+(6, '1', '19:00', '22:00', '07:00', '08:00', '1', '19:00', '22:00', '07:00', '08:00', '1', '19:00', '22:00', '07:00', '08:00', '1', '19:00', '22:00', '07:00', '08:00', '1', '19:00', '22:00', '07:00', '08:00', '1', '19:00', '22:00', '07:00', '08:00', '1', '19:00', '22:00', '07:00', '08:00', 30);
 
 -- --------------------------------------------------------
 
@@ -530,7 +601,7 @@ CREATE TABLE `setelan` (
 --
 
 INSERT INTO `setelan` (`id_setelan`, `nama`, `base_url`, `chat_id_group`, `token_bot`, `url_telegram_group`, `latitude_instansi`, `longitude_instansi`, `radius_meter`, `api_maps`, `hadir_radius`, `izin_radius`, `sakit_radius`) VALUES
-(1, 'Absensi Sekolah', 'https://absensi_sekolah.dev/absensi-v4', 'NULL', 'NULL', 'NULL', '-8.363458104844058', '113.60179607355322', 50, 'AIzaSyCDxWs6TS5gT7svjhjIHO0HSN_SlxAHIEM', '1', '0', '0');
+(1, 'Absensi SMAIA-5', 'https://192.168.1.222/absensi', '-4057290877', '6926090601:AAHePveOdu3YOT0-NEdLp4-IUnVXLwA5KYs', 'https://t.me/+ysZgMSQhOsc1OWRl', '-6.69877009944321', '108.54368000890153', 500, 'AIzaSyCDxWs6TS5gT7svjhjIHO0HSN_SlxAHIEM', '1', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -578,8 +649,43 @@ CREATE TABLE `tb_guru` (
   `nama` varchar(128) DEFAULT NULL,
   `telegram` varchar(16) DEFAULT NULL,
   `profil` varchar(32) DEFAULT NULL,
-  `password` varchar(64) DEFAULT NULL
+  `password` varchar(64) DEFAULT NULL,
+  `id_jabatan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_guru`
+--
+
+INSERT INTO `tb_guru` (`id_guru`, `nip`, `nama`, `telegram`, `profil`, `password`, `id_jabatan`) VALUES
+(117, 'Ad19890610', 'Ade Prasetia Agung Gumelar Purnama', NULL, 'user.png', '$2y$10$li4vr5JCZSWNJA7HlJN.yeDR7r7SdjrSC4os7rpIJ6yWd.Yhwk0Ki', 3),
+(118, 'Ak19920817', 'Akbar', NULL, 'user.png', '$2y$10$AG4KB/0QzFVvNzNqmzwMg.nGGTLaUvh/dZqkmlad1nYcIfT7/dQr6', 3),
+(119, 'Ak19810607', 'Akyad', NULL, 'user.png', '$2y$10$N2AVjc83bWv58kiNiEj2Z.y8Aco4UKzihdhENj.peQtroyUfiWQ1e', 3),
+(120, 'An19670413', 'Andi Kusnanto', NULL, 'user.png', '$2y$10$evZMvocNKZqr3WDt6EIcqOGhulwy8uXs3uq7pmqprZ7nW7ZNIXjdK', 3),
+(121, 'De19830112', 'Dede Maemanah', NULL, 'user.png', '$2y$10$Clephu.q2P3Hox3DVsaog.6PW1HlF8PZGuVQdtE14bq8i19EhTgCy', 3),
+(122, 'El19690701', 'Eli Juliatul Chaerijah', NULL, 'user.png', '$2y$10$LNzvO7E4py5mK4865dqThurOzSg3Oav2pXBh70NNlc15Y/ZJmLfIy', 3),
+(123, 'FA19980207', 'FANNY FITRI ANDRIANI', NULL, 'user.png', '$2y$10$wW4yfBYiTR61bVPikSMRyO9fiDntSm/sOMFoNnZJlAi92vr3.MDBC', 3),
+(124, 'FI19920528', 'FIQIH MAISAROH', NULL, 'user.png', '$2y$10$Xd0PxCW5aXPY.OfS.TExb.XjX3eOMI.dfSS6oIZ57TtE8tOoBQBfW', 3),
+(125, 'Ha19760204', 'Hary Nurcahyo', NULL, 'user.png', '$2y$10$ECXu.oI5zJLvpoX3n.ipUu6HgGJaLsJozkyMcZ9.FsR6Aakoqs252', 3),
+(126, 'Ii19810226', 'Iif Arif Rivai,spd', NULL, 'user.png', '$2y$10$Y5XryiKzy7HEfluxyxVB7O.qe2pvj8cZJv3pcLwp5HdN5lpmNT2je', 3),
+(127, 'IN19950118', 'INTAN AYUNINGTIAS', NULL, 'user.png', '$2y$10$pma8qWe9T405tep9eLpeIOJvej7FLiaheWlL9an5mtVThc1joQHtm', 3),
+(128, 'Is19921012', 'Isep Badrussalam Wanasima', NULL, 'user.png', '$2y$10$1PrvLAC5is4qGf5ffitSTeqPNxm3i/FTFGL0U8si1dFBETSvHomvm', 3),
+(129, 'LA19820916', 'LAILI RAHMAWATI', NULL, 'user.png', '$2y$10$zedq7Yndaho04KbCY/BazO2ZGLEkXnHrRIQB9BXTKh02QnOPQOkHW', 3),
+(130, 'Mo19911005', 'Mohamad Aziz Ali', NULL, 'user.png', '$2y$10$6jSaw7Rl2omH16TS6bw84uHMQNuFFIPYi5eF1gL6zDE8JdOFjNSrG', 3),
+(131, 'MU19950226', 'MUHAMMAD FIKRI RAMADHAN', NULL, 'user.png', '$2y$10$oUvU9Rej3SmC8wBJ.fv07OEr2J5XPNYJ0hqpfzQm1cHgQ5fGAf0rW', 3),
+(132, 'Na19850324', 'Nana Sudiana', NULL, 'user.png', '$2y$10$A4m.PQRtRfyghw5ecHAjHePh4waTesHJq1DLbS6j3qAH.vfTzXH5m', 3),
+(133, 'NE19911226', 'NELAN BAHAR PRADESKA', NULL, 'user.png', '$2y$10$KaexmVJrk3iuxi7Zz.Kb1OQ2pbdpDZpd9WG38hlEKEaTh1qA16guG', 3),
+(134, 'NO19951210', 'NOVI WULANDARI', NULL, 'user.png', '$2y$10$AFGBlEfKvsTMWJb1Xv2K1upIvYlnQHDWGFDD13XbUb.q51yfUYstW', 3),
+(135, 'Ra19670928', 'Rahadi Fajar Syah', NULL, 'user.png', '$2y$10$nMp2VM/AdbLJSyydqkBAGussBEzFN8LR3jQeBcyhP5jxOmbx2LArC', 3),
+(136, 'Si19690902', 'Sirojudin', NULL, 'user.png', '$2y$10$Cd32o8zUj49oxkNKHzLDsObUo/LV8A7oBd5agDygYrapnZNNRvkwm', 3),
+(137, 'Sr19681215', 'Sri Ernawati', NULL, 'user.png', '$2y$10$FDj4HFjCa98jxEQS8TcY2Ogu/ipPQRCwkrbv0tfswScI5yVEZE.Je', 3),
+(138, 'Sr19690327', 'Sri Nurhaeni', NULL, 'user.png', '$2y$10$U732pKl0GXRubp2DD5/mjuQTlnFKr7HYYuHtcqEJCSYOIjr6dhAxy', 3),
+(139, 'Sr19731120', 'Sri Winarti', NULL, 'user.png', '$2y$10$j0utWEGubFBX6lDE2MCah.z/cCRtHRdScMB5.T6fPs1ZE28jxu4AO', 3),
+(140, 'Su19680911', 'Subkhi', NULL, 'user.png', '$2y$10$hLArOgRkqTTQErWLv0XRreQy5g9rRaOe92NTq1q.Q9QmXobeHYvXK', 3),
+(141, 'Su19740620', 'Suwasih', NULL, 'user.png', '$2y$10$xIrYtqCwbxedWuEK42UASu1CuGs3xuLBd9O2aR8cnjiNtSalnoP4G', 3),
+(142, 'Sy19750517', 'Syamsuddin', NULL, 'user.png', '$2y$10$yL.FqEIY/5E6Cwhd64bu4OiriTMltr7MsgnMmvXrOowegjFljSgaS', 3),
+(143, 'Us19660416', 'Usep Saefudin', NULL, 'user.png', '$2y$10$F/530LgojYas4ZAeysmx1u4zqjEhLroxli6cquJ4/uDd5kesZuXBK', 3),
+(144, 'Wa19670402', 'Waryo', NULL, 'user.png', '$2y$10$55blrc1F5yKAtcMUtoSDLO/xySBA/GHTJbaGLDuVy32X9W3aEdIte', 3);
 
 -- --------------------------------------------------------
 
@@ -591,6 +697,17 @@ CREATE TABLE `tb_jabatan` (
   `id_jabatan` int(11) NOT NULL,
   `jabatan` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_jabatan`
+--
+
+INSERT INTO `tb_jabatan` (`id_jabatan`, `jabatan`) VALUES
+(1, 'Kepsek'),
+(2, 'Karyawan'),
+(3, 'Guru'),
+(4, 'Satpam'),
+(5, 'Yayasan');
 
 -- --------------------------------------------------------
 
@@ -611,6 +728,26 @@ CREATE TABLE `tb_karyawan` (
   `password` varchar(64) NOT NULL,
   `token_karyawan` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_karyawan`
+--
+
+INSERT INTO `tb_karyawan` (`id_karyawan`, `nip`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jk`, `alamat`, `id_jabatan`, `profil`, `password`, `token_karyawan`) VALUES
+(17, 'Ab19770807', 'Abdul Rokhim', NULL, NULL, 'Laki-laki', 'Cirebon', 5, 'user.png', '19770807', 'c4924650dea24c264d0f7d0954ad1f4219dcce30e107aa3d6e33555e3714a28a'),
+(18, 'Ag19740801', 'Agus Tarjono', NULL, NULL, 'Laki-laki', 'Cirebon', 4, 'user.png', '19740801', '1aa670cbbacffe0c95775248f349d72891b3eccacd64d437df8f9f059a9fc25b'),
+(19, 'Da19780321', 'Dani Sardani', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19780321', '312fa551890f81ce7b4fe351cef1712b0b81784e37ad73fb74ce3156dc97486e'),
+(20, 'Lu19870209', 'Lukman', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19870209', '2a59682413fa819d5ef014ef222690c24b65a449aecedff87d6e3e9400d9d2f3'),
+(21, 'M.19700409', 'M.nono Suparno', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19700409', 'bbe2638d19839152c617fb17b2b0e879562cfbb5d1fe327b85cdff44f3a09ec9'),
+(22, 'Ma19690817', 'Maksum', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19690817', 'd1f646612b997964601db65fd88a74ba9abc26d22b085ed9f9cd622950f4b19e'),
+(23, 'No19770902', 'Nono Waryono Setiawan', NULL, NULL, 'Laki-laki', 'Cirebon', 4, 'user.png', '19770902', '1feff41613111c401c4c7005bdf4c5219a9e7ab6e2e8a52e9c7b42d72b1df345'),
+(24, 'Nu19700706', 'Nurwahyudin', NULL, NULL, 'Laki-laki', 'Cirebon', 1, 'user.png', '19700706', '04ebc1c04705dff24803af8643faec2de7787d61fcd577b4a763cffa7b217fb1'),
+(25, 'RA19990516', 'RAAFIUD DAROJAT RIDWANSYAH', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19990516', 'ed1110a01ce50866773ee70e3b04157dffbd8de66b800a3877547d6b5f140ee8'),
+(26, 'Ri19720322', 'Rina Suhestianingsih', NULL, NULL, 'Perempuan', 'Cirebon', 5, 'user.png', '19720322', '51c4fd66a324d9beff1828685e02aeafd4d2f7c6b0660dae42ccf65a15c65fe5'),
+(27, 'SU19691231', 'SUGIANTO', NULL, NULL, 'Laki-laki', 'Cirebon', 4, 'user.png', '19691231', 'bb5961c136cf3452b9a54d153503db793ac13705371a06ff2e16ceca1e092286'),
+(28, 'Su19730504', 'Sumida', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19730504', '80b565cf63fec7c8bbf811f418deaaf7b293f427f548f082ff793aa80a3c077c'),
+(29, 'Su19700901', 'Sunendar', NULL, NULL, 'Laki-laki', 'Cirebon', 2, 'user.png', '19700901', '1a7c68bf6e3b9c58010e62e9c23338fb045d84f44ce665e14eab18e4e67812b5'),
+(30, 'SU19830725', 'SURDI SUJARWADI', NULL, NULL, 'Laki-laki', 'Cirebon', 4, 'user.png', '19830725', '094e51aed0fbc10f074f3dde433513a8d9bf1ddcfdc4b3a89a11535b98ad37ba');
 
 -- --------------------------------------------------------
 
@@ -636,6 +773,7 @@ CREATE TABLE `tb_kegiatan_guru` (
 CREATE TABLE `tb_kelas` (
   `id_kelas` int(11) NOT NULL,
   `id_guru` int(11) NOT NULL,
+  `kelompok_kelas` varchar(255) DEFAULT NULL,
   `kelas` varchar(128) NOT NULL,
   `masuk_mulai` varchar(11) NOT NULL,
   `masuk_akhir` varchar(11) NOT NULL,
@@ -647,6 +785,24 @@ CREATE TABLE `tb_kelas` (
   `pulang_mulai_jumat` varchar(11) NOT NULL,
   `pulang_akhir_jumat` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_kelas`
+--
+
+INSERT INTO `tb_kelas` (`id_kelas`, `id_guru`, `kelompok_kelas`, `kelas`, `masuk_mulai`, `masuk_akhir`, `pulang_mulai`, `pulang_akhir`, `ditambahkan`, `notif_absen_telegram`, `token_kelas`, `pulang_mulai_jumat`, `pulang_akhir_jumat`) VALUES
+(1, 131, '10', '10-1', '06:00', '07:00', '15:00', '17:00', 1704435523, 'N', 'f01f64b8fcd24352255b76564443f9d7', '13:00', '17:30'),
+(2, 130, '10', '10-2', '06:00', '07:00', '15:00', '17:30', 1704435648, 'N', '3f25f4e0bb44613ce3f484bbdf7efe81', '13:00', '17:30'),
+(3, 134, '10', '10-3', '06:00', '07:00', '15:00', '17:30', 1704435715, 'N', '1bf9cbec35fc16c310c52c8da6a1639e', '13:00', '17:30'),
+(4, 128, '11', '11-IPA-1', '06:00', '07:00', '15:00', '17:30', 1704438379, 'N', '060677a577cd30e2f80d8a6d62b77f23', '12:30', '17:30'),
+(5, 118, '11', '11-IPA-2', '06:00', '07:00', '15:00', '17:30', 1704438445, 'N', '2fa46cee38861f4ba3f0077cf56f65ab', '12:30', '17:30'),
+(6, 121, '11', '11-IPA-3', '06:00', '07:00', '15:00', '17:30', 1704438605, 'N', '320675ecac295a5bf73c7592a7f78eaa', '12:30', '17:30'),
+(7, 141, '11', '11-IPS-1', '06:00', '07:00', '15:00', '17:30', 1704438673, 'N', '4d790946372444605d86785355028cf3', '12:30', '17:30'),
+(8, 133, '11', '11-IPS-2', '06:00', '07:00', '15:00', '17:30', 1704438747, 'N', '36d5f1ee604b96085917ca7c46bfaf31', '12:30', '17:30'),
+(9, 137, '12', '12-IPA-1', '06:00', '07:00', '15:00', '17:30', 1704438834, 'N', 'd41aed73a4d6604a87a6000f57551075', '12:30', '17:30'),
+(10, 122, '12', '12-IPA-2', '06:00', '07:00', '15:00', '17:30', 1704438900, 'N', '6ff2dd2dc05cd561619471353678070f', '12:30', '17:30'),
+(11, 129, '12', '12-IPA-3', '06:00', '07:00', '15:00', '17:30', 1704438960, 'N', 'ccf9eb6d63c5cb3d5cbd34494d586713', '12:30', '17:30'),
+(12, 140, '12', '12-IPS', '06:00', '07:00', '15:00', '17:30', 1704439018, 'N', 'a727c6dc98c434c222f48ac6cf56b15f', '12:30', '17:30');
 
 -- --------------------------------------------------------
 
@@ -693,6 +849,358 @@ CREATE TABLE `tb_siswa` (
   `telepon_rumah` varchar(16) DEFAULT NULL,
   `chat_id` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_siswa`
+--
+
+INSERT INTO `tb_siswa` (`id_siswa`, `id_guru`, `nis`, `nama_depan`, `nama_belakang`, `jk`, `provinsi`, `kota`, `kecamatan`, `kelurahan`, `telegram`, `telegram_bot`, `profil`, `password`, `token_kelas`, `username_ortu`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `pekerjaan_ibu`, `telepon_rumah`, `chat_id`) VALUES
+(1, 131, '232410001', 'AKMAL WIDI SAPUTRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410001', 'f01f64b8fcd24352255b76564443f9d7', '37740503', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 131, '232410002', 'AL FAREZ AS SHIDQI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410002', 'f01f64b8fcd24352255b76564443f9d7', '13700248', NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 131, '232410003', 'ANDI SUPARDI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410003', 'f01f64b8fcd24352255b76564443f9d7', '57541720', NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 131, '232410004', 'AZZUSA CELIA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410004', 'f01f64b8fcd24352255b76564443f9d7', '07481004', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 131, '232410005', 'BETARINA MEGANTRA PAJRIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410005', 'f01f64b8fcd24352255b76564443f9d7', '45718433', NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 131, '232410006', 'CINTA HAWA MAULANI ATTARSYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410006', 'f01f64b8fcd24352255b76564443f9d7', '78202514', NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 131, '232410007', 'DINA TIARA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410007', 'f01f64b8fcd24352255b76564443f9d7', '03844254', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 131, '232410008', 'ELSA KUSMAYANTI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410008', 'f01f64b8fcd24352255b76564443f9d7', '78018432', NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 131, '232410009', 'EVAN BACHTIAR AQUILANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410009', 'f01f64b8fcd24352255b76564443f9d7', '24414005', NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 131, '232410010', 'FATMA AZZAHRAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410010', 'f01f64b8fcd24352255b76564443f9d7', '70314005', NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 131, '232410011', 'HABIBIE NABHAN ABQARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410011', 'f01f64b8fcd24352255b76564443f9d7', '18728045', NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 131, '232410012', 'HAFIDZAH ALMA RAHMADIANTY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410012', 'f01f64b8fcd24352255b76564443f9d7', '00445354', NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 131, '232410013', 'IQBAL FATHURROHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410013', 'f01f64b8fcd24352255b76564443f9d7', '24884214', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 131, '232410014', 'KAYLA NAJWA FITRI YANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410014', 'f01f64b8fcd24352255b76564443f9d7', '27010250', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 131, '232410015', 'KHUSNUL KHOTIMAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410015', 'f01f64b8fcd24352255b76564443f9d7', '24177304', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 131, '232410016', 'MOHAMMAD FAHZRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410016', 'f01f64b8fcd24352255b76564443f9d7', '52474347', NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 131, '232410017', 'MUHAMAD FAISAL ABDURRAHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410017', 'f01f64b8fcd24352255b76564443f9d7', '43580712', NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 131, '232410018', 'MOHAMMAD FATHAN AL FARIZKI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410018', 'f01f64b8fcd24352255b76564443f9d7', '88722143', NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 131, '232410019', 'MUHAMMAD REIHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410019', 'f01f64b8fcd24352255b76564443f9d7', '04200784', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 131, '232410022', 'R. MUHAMMAD NABIEL MAQIL GHAISAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410022', 'f01f64b8fcd24352255b76564443f9d7', '14544817', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 131, '232410023', 'RARA ANNADIAZTY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410023', 'f01f64b8fcd24352255b76564443f9d7', '25348472', NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 131, '232410024', 'RIRIN RIANTIKA SOPYAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410024', 'f01f64b8fcd24352255b76564443f9d7', '04240308', NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 131, '232410025', 'UZLIFATUL JANNAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410025', 'f01f64b8fcd24352255b76564443f9d7', '84143584', NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 131, '232410026', 'VIELGA VALENT BANETTAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410026', 'f01f64b8fcd24352255b76564443f9d7', '43325882', NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 131, '232410027', 'ZAHRA SALSABILA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410027', 'f01f64b8fcd24352255b76564443f9d7', '34015170', NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 130, '232410028', 'AKHI WAHIB RIZKY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410028', '3f25f4e0bb44613ce3f484bbdf7efe81', '03341743', NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 130, '232410029', 'ALIVIA KAMILA ANJARSARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410029', '3f25f4e0bb44613ce3f484bbdf7efe81', '94173045', NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 130, '232410030', 'ALVIAN ADI PERMANA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410030', '3f25f4e0bb44613ce3f484bbdf7efe81', '89383074', NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 130, '232410031', 'ARINDA PUTRI PERMATASARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410031', '3f25f4e0bb44613ce3f484bbdf7efe81', '87739105', NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 130, '232410032', 'BUNGA FITRI WULANDARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410032', '3f25f4e0bb44613ce3f484bbdf7efe81', '48907510', NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 130, '232410033', 'DEVINTHA AYUNDHIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410033', '3f25f4e0bb44613ce3f484bbdf7efe81', '57431335', NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 130, '232410034', 'DISCA FAREL JULIANTY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410034', '3f25f4e0bb44613ce3f484bbdf7efe81', '71395883', NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 130, '232410035', 'ELLENA PUTRI DENYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410035', '3f25f4e0bb44613ce3f484bbdf7efe81', '48513335', NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 130, '232410036', 'FAHRI HASAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410036', '3f25f4e0bb44613ce3f484bbdf7efe81', '34470847', NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 130, '232410037', 'FATIYAH NUR KHOLILAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410037', '3f25f4e0bb44613ce3f484bbdf7efe81', '37031359', NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 130, '232410038', 'GALI PRASTIO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410038', '3f25f4e0bb44613ce3f484bbdf7efe81', '04498837', NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 130, '232410039', 'KEYSHA MAULIDA DWINANDA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410039', '3f25f4e0bb44613ce3f484bbdf7efe81', '13041854', NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 130, '232410040', 'MAYORA INDAH LEFRIANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410040', '3f25f4e0bb44613ce3f484bbdf7efe81', '49534891', NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 130, '232410041', 'MUHAMMAD AKHDAAN SHAVIER', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410041', '3f25f4e0bb44613ce3f484bbdf7efe81', '87394479', NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 130, '232410042', 'MUHAMMAD AZKA NAUFAL BUDRISTIANTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410042', '3f25f4e0bb44613ce3f484bbdf7efe81', '93839477', NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 130, '232410043', 'MUHAMMAD FAISAL ARVEL', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410043', '3f25f4e0bb44613ce3f484bbdf7efe81', '14573437', NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 130, '232410044', 'MUHAMMAD RAFFI KHUDDIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410044', '3f25f4e0bb44613ce3f484bbdf7efe81', '71450404', NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 130, '232410045', 'NADHIRA KAMILA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410045', '3f25f4e0bb44613ce3f484bbdf7efe81', '59195881', NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 130, '232410046', 'NAZLA ELSAYNA ZAHRATHUSITHA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410046', '3f25f4e0bb44613ce3f484bbdf7efe81', '45488933', NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 130, '232410047', 'NURFAJRIYATI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410047', '3f25f4e0bb44613ce3f484bbdf7efe81', '48347378', NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 130, '232410048', 'REHAN RIZALDI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410048', '3f25f4e0bb44613ce3f484bbdf7efe81', '50414785', NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 130, '232410049', 'SABRINA NURHASANAH MUSTOFA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410049', '3f25f4e0bb44613ce3f484bbdf7efe81', '41340305', NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 130, '232410050', 'SRI FATIMAH NINGSIH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410050', '3f25f4e0bb44613ce3f484bbdf7efe81', '01833914', NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 130, '232410051', 'TSAMANIYAH MUMTAZAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410051', '3f25f4e0bb44613ce3f484bbdf7efe81', '88447530', NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 130, '232410052', 'ZIKRA TRIYA WIGUSNA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410052', '3f25f4e0bb44613ce3f484bbdf7efe81', '77940830', NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 130, '232410083', 'IKHSAN HABIBATUR RAHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410083', '3f25f4e0bb44613ce3f484bbdf7efe81', '31854493', NULL, NULL, NULL, NULL, NULL, NULL),
+(54, 134, '232410053', 'ADILUHUNG PANGAWERUH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410053', '1bf9cbec35fc16c310c52c8da6a1639e', '54713430', NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 134, '232410055', 'AGUNG LAKSONO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410055', '1bf9cbec35fc16c310c52c8da6a1639e', '41408077', NULL, NULL, NULL, NULL, NULL, NULL),
+(56, 134, '232410056', 'ANDHIKA PUTRA DINATA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410056', '1bf9cbec35fc16c310c52c8da6a1639e', '54087474', NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 134, '232410057', 'APRILIA DWI SUSANTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410057', '1bf9cbec35fc16c310c52c8da6a1639e', '53857544', NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 134, '232410058', 'ARVIN AQILLA AKHBAR', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410058', '1bf9cbec35fc16c310c52c8da6a1639e', '45584510', NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 134, '232410059', 'CUT MATARULMAL', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410059', '1bf9cbec35fc16c310c52c8da6a1639e', '31457788', NULL, NULL, NULL, NULL, NULL, NULL),
+(60, 134, '232410060', 'DIAZ MAULIDA AULIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410060', '1bf9cbec35fc16c310c52c8da6a1639e', '35178044', NULL, NULL, NULL, NULL, NULL, NULL),
+(61, 134, '232410061', 'FELLIA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410061', '1bf9cbec35fc16c310c52c8da6a1639e', '15505378', NULL, NULL, NULL, NULL, NULL, NULL),
+(62, 134, '232410062', 'HARIS HIBATULLAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410062', '1bf9cbec35fc16c310c52c8da6a1639e', '50354774', NULL, NULL, NULL, NULL, NULL, NULL),
+(63, 134, '232410063', 'JALALUDIN ZAYYAN AL - BADAR', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410063', '1bf9cbec35fc16c310c52c8da6a1639e', '58505317', NULL, NULL, NULL, NULL, NULL, NULL),
+(64, 134, '232410064', 'LINTANG MUGYA LESTARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410064', '1bf9cbec35fc16c310c52c8da6a1639e', '58443553', NULL, NULL, NULL, NULL, NULL, NULL),
+(65, 134, '232410065', 'LOVIONA ADINDA PUTRI YOHANDI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410065', '1bf9cbec35fc16c310c52c8da6a1639e', '51555475', NULL, NULL, NULL, NULL, NULL, NULL),
+(66, 134, '232410066', 'MOHAMMAD FADHEL RAMADHAN SUGIHARTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410066', '1bf9cbec35fc16c310c52c8da6a1639e', '47584533', NULL, NULL, NULL, NULL, NULL, NULL),
+(67, 134, '232410067', 'M. RAFLY NUR RAMADHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410067', '1bf9cbec35fc16c310c52c8da6a1639e', '84010373', NULL, NULL, NULL, NULL, NULL, NULL),
+(68, 134, '232410068', 'MUHAMMAD ROBBY YOUSSEF HANADI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410068', '1bf9cbec35fc16c310c52c8da6a1639e', '74540185', NULL, NULL, NULL, NULL, NULL, NULL),
+(69, 134, '232410069', 'MAULIDA DWIHANDINI SUSANTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410069', '1bf9cbec35fc16c310c52c8da6a1639e', '55550481', NULL, NULL, NULL, NULL, NULL, NULL),
+(70, 134, '232410070', 'MUHAMMAD ARIFAL', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410070', '1bf9cbec35fc16c310c52c8da6a1639e', '45515441', NULL, NULL, NULL, NULL, NULL, NULL),
+(71, 134, '232410071', 'NAYCHILLA CHEVA RAMADHANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410071', '1bf9cbec35fc16c310c52c8da6a1639e', '50413554', NULL, NULL, NULL, NULL, NULL, NULL),
+(72, 134, '232410072', 'QISTHY NAJLA MEUTIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410072', '1bf9cbec35fc16c310c52c8da6a1639e', '45147755', NULL, NULL, NULL, NULL, NULL, NULL),
+(73, 134, '232410073', 'REVA ARMELIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '232410073', '1bf9cbec35fc16c310c52c8da6a1639e', '55544104', NULL, NULL, NULL, NULL, NULL, NULL),
+(74, 134, '232410074', 'RIFDA NAFISA PASHA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '232410074', '1bf9cbec35fc16c310c52c8da6a1639e', '30505487', NULL, NULL, NULL, NULL, NULL, NULL),
+(75, 134, '232410075', 'RIMAH INDAH FAUZIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410075', '1bf9cbec35fc16c310c52c8da6a1639e', '15880447', NULL, NULL, NULL, NULL, NULL, NULL),
+(76, 134, '232410076', 'SANTOSO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232410076', '1bf9cbec35fc16c310c52c8da6a1639e', '47143014', NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 134, '232410077', 'TIARA SALSABILA ZAHRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410077', '1bf9cbec35fc16c310c52c8da6a1639e', '43378545', NULL, NULL, NULL, NULL, NULL, NULL),
+(78, 134, '232410078', 'ZASKYA AISYAH AFIFAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '232410078', '1bf9cbec35fc16c310c52c8da6a1639e', '84745451', NULL, NULL, NULL, NULL, NULL, NULL),
+(79, 134, '232410079', 'ZYASKHA AUSHIVA ZAMEERA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232410079', '1bf9cbec35fc16c310c52c8da6a1639e', '80547805', NULL, NULL, NULL, NULL, NULL, NULL),
+(80, 134, '232410081', 'ALVITA MARISA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232410081', '1bf9cbec35fc16c310c52c8da6a1639e', '75145355', NULL, NULL, NULL, NULL, NULL, NULL),
+(110, 118, '222310004', 'ALSYA FAYI RIYADI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310004', '2fa46cee38861f4ba3f0077cf56f65ab', '14799933', NULL, NULL, NULL, NULL, NULL, NULL),
+(111, 118, '222310036', 'AMANDA FIANTIKA SLAVIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310036', '2fa46cee38861f4ba3f0077cf56f65ab', '93141109', NULL, NULL, NULL, NULL, NULL, NULL),
+(112, 118, '222310038', 'ANGGUN LESTARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310038', '2fa46cee38861f4ba3f0077cf56f65ab', '19793944', NULL, NULL, NULL, NULL, NULL, NULL),
+(113, 118, '222310072', 'CARRA SAFIRA MAULIDDINA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310072', '2fa46cee38861f4ba3f0077cf56f65ab', '49930092', NULL, NULL, NULL, NULL, NULL, NULL),
+(114, 118, '222310043', 'DESYA ARYUNINGTYAS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310043', '2fa46cee38861f4ba3f0077cf56f65ab', '79910199', NULL, NULL, NULL, NULL, NULL, NULL),
+(115, 118, '222310010', 'EZUA PURNA AMUSTY NUSWANTORO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310010', '2fa46cee38861f4ba3f0077cf56f65ab', '14439992', NULL, NULL, NULL, NULL, NULL, NULL),
+(116, 118, '222310076', 'FAQIH HIDAYATUS SALAM', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310076', '2fa46cee38861f4ba3f0077cf56f65ab', '44092749', NULL, NULL, NULL, NULL, NULL, NULL),
+(117, 118, '222310046', 'FARIZQI NARDIANSYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310046', '2fa46cee38861f4ba3f0077cf56f65ab', '27041299', NULL, NULL, NULL, NULL, NULL, NULL),
+(118, 118, '222310047', 'FATIMAH RATNA MUNDIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310047', '2fa46cee38861f4ba3f0077cf56f65ab', '49149470', NULL, NULL, NULL, NULL, NULL, NULL),
+(119, 118, '222310078', 'FIORENZA HAZEL BRANDY BARRIGA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310078', '2fa46cee38861f4ba3f0077cf56f65ab', '47119939', NULL, NULL, NULL, NULL, NULL, NULL),
+(120, 118, '222310013', 'FITRIANI GHINA IMANNIKI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310013', '2fa46cee38861f4ba3f0077cf56f65ab', '39449709', NULL, NULL, NULL, NULL, NULL, NULL),
+(121, 118, '222310014', 'HARSYA BINTANG LAZUAR', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310014', '2fa46cee38861f4ba3f0077cf56f65ab', '97107499', NULL, NULL, NULL, NULL, NULL, NULL),
+(122, 118, '222310050', 'HAURA AINUN MAHYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310050', '2fa46cee38861f4ba3f0077cf56f65ab', '47999922', NULL, NULL, NULL, NULL, NULL, NULL),
+(123, 118, '222310016', 'ISTIANAH MERDEKA SARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310016', '2fa46cee38861f4ba3f0077cf56f65ab', '14799494', NULL, NULL, NULL, NULL, NULL, NULL),
+(124, 118, '222310052', 'JAUZA ZAHRA FADIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310052', '2fa46cee38861f4ba3f0077cf56f65ab', '97040729', NULL, NULL, NULL, NULL, NULL, NULL),
+(125, 118, '222310017', 'KEISYA NAURA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310017', '2fa46cee38861f4ba3f0077cf56f65ab', '10394999', NULL, NULL, NULL, NULL, NULL, NULL),
+(126, 118, '222310080', 'KIAN RIFQY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310080', '2fa46cee38861f4ba3f0077cf56f65ab', '20990349', NULL, NULL, NULL, NULL, NULL, NULL),
+(127, 118, '222310058', 'MOHAMAD RIZKY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310058', '2fa46cee38861f4ba3f0077cf56f65ab', '97041992', NULL, NULL, NULL, NULL, NULL, NULL),
+(128, 118, '222310086', 'MUAMAR KADAFI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310086', '2fa46cee38861f4ba3f0077cf56f65ab', '99499344', NULL, NULL, NULL, NULL, NULL, NULL),
+(129, 118, '222310060', 'MUHAMMAD FIKRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310060', '2fa46cee38861f4ba3f0077cf56f65ab', '94139091', NULL, NULL, NULL, NULL, NULL, NULL),
+(130, 118, '222310063', 'MUHAMMAD ZAKY ADILLAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310063', '2fa46cee38861f4ba3f0077cf56f65ab', '90107342', NULL, NULL, NULL, NULL, NULL, NULL),
+(131, 118, '222310162', 'NADIA HUSNI KHAIRUNNISA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310162', '2fa46cee38861f4ba3f0077cf56f65ab', '97029393', NULL, NULL, NULL, NULL, NULL, NULL),
+(132, 118, '222310089', 'NAILI RAHMAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310089', '2fa46cee38861f4ba3f0077cf56f65ab', '00991273', NULL, NULL, NULL, NULL, NULL, NULL),
+(133, 118, '222310025', 'NAUFAL RIZKY FAUZI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310025', '2fa46cee38861f4ba3f0077cf56f65ab', '79499142', NULL, NULL, NULL, NULL, NULL, NULL),
+(134, 118, '222310090', 'NAZWA SALSABILA RAMADANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310090', '2fa46cee38861f4ba3f0077cf56f65ab', '94999291', NULL, NULL, NULL, NULL, NULL, NULL),
+(135, 118, '222310066', 'RAIHANA PUTRI SHABIRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310066', '2fa46cee38861f4ba3f0077cf56f65ab', '40239039', NULL, NULL, NULL, NULL, NULL, NULL),
+(136, 118, '222310096', 'RATNA GALIH YUDIA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310096', '2fa46cee38861f4ba3f0077cf56f65ab', '03972749', NULL, NULL, NULL, NULL, NULL, NULL),
+(137, 118, '222310026', 'RATU DOROTY AYNISA KRISTINA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310026', '2fa46cee38861f4ba3f0077cf56f65ab', '29909934', NULL, NULL, NULL, NULL, NULL, NULL),
+(138, 118, '222310027', 'RAYLA ATHAYA ABDULLAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310027', '2fa46cee38861f4ba3f0077cf56f65ab', '19439940', NULL, NULL, NULL, NULL, NULL, NULL),
+(139, 118, '222310028', 'RENA AULIDINA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310028', '2fa46cee38861f4ba3f0077cf56f65ab', '94971921', NULL, NULL, NULL, NULL, NULL, NULL),
+(140, 118, '222310097', 'RENATA ZULISVIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310097', '2fa46cee38861f4ba3f0077cf56f65ab', '44994172', NULL, NULL, NULL, NULL, NULL, NULL),
+(141, 118, '222310100', 'SOFIAH ATTAMIMI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310100', '2fa46cee38861f4ba3f0077cf56f65ab', '47794201', NULL, NULL, NULL, NULL, NULL, NULL),
+(142, 118, '222310033', 'TARISCHA AZZAHRA PUTRANTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310033', '2fa46cee38861f4ba3f0077cf56f65ab', '79319419', NULL, NULL, NULL, NULL, NULL, NULL),
+(143, 118, '232411082', 'ANASTASYA LOVENIA MARYAM', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '232411082', '2fa46cee38861f4ba3f0077cf56f65ab', '39294042', NULL, NULL, NULL, NULL, NULL, NULL),
+(147, 121, '222310166', 'AGNIYA AMELIA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310166', '320675ecac295a5bf73c7592a7f78eaa', '77445444', NULL, NULL, NULL, NULL, NULL, NULL),
+(148, 121, '222310001', 'AJENG SEPDWI KIRANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310001', '320675ecac295a5bf73c7592a7f78eaa', '47044514', NULL, NULL, NULL, NULL, NULL, NULL),
+(149, 121, '222310037', 'ANDIAR INDIARTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310037', '320675ecac295a5bf73c7592a7f78eaa', '01545074', NULL, NULL, NULL, NULL, NULL, NULL),
+(150, 121, '222310159', 'ATHALLAH RADITYA RAHMAT', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310159', '320675ecac295a5bf73c7592a7f78eaa', '41700440', NULL, NULL, NULL, NULL, NULL, NULL),
+(151, 121, '222310070', 'ATHIYYAH RAHMAWATI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310070', '320675ecac295a5bf73c7592a7f78eaa', '40474504', NULL, NULL, NULL, NULL, NULL, NULL),
+(152, 121, '222310073', 'CEYRIL NABILA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310073', '320675ecac295a5bf73c7592a7f78eaa', '00044404', NULL, NULL, NULL, NULL, NULL, NULL),
+(153, 121, '222310006', 'CINTA AULIA PUTRI HARYONO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310006', '320675ecac295a5bf73c7592a7f78eaa', '74000544', NULL, NULL, NULL, NULL, NULL, NULL),
+(154, 121, '222310007', 'DAFFA RIFKY IKHYANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310007', '320675ecac295a5bf73c7592a7f78eaa', '47540044', NULL, NULL, NULL, NULL, NULL, NULL),
+(155, 121, '222310074', 'DANI MUHANA RIZQI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310074', '320675ecac295a5bf73c7592a7f78eaa', '05054470', NULL, NULL, NULL, NULL, NULL, NULL),
+(156, 121, '222310042', 'DEAN PRASETYO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310042', '320675ecac295a5bf73c7592a7f78eaa', '11554444', NULL, NULL, NULL, NULL, NULL, NULL),
+(157, 121, '222310008', 'DEDE HABIBI AMIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310008', '320675ecac295a5bf73c7592a7f78eaa', '00455170', NULL, NULL, NULL, NULL, NULL, NULL),
+(158, 121, '222310045', 'DEYAN FEBRI MUYASSAROH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310045', '320675ecac295a5bf73c7592a7f78eaa', '05150444', NULL, NULL, NULL, NULL, NULL, NULL),
+(159, 121, '222310011', 'FACHRI KHOMEINI AL FALAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310011', '320675ecac295a5bf73c7592a7f78eaa', '41747541', NULL, NULL, NULL, NULL, NULL, NULL),
+(160, 121, '222310048', 'FAYRA SALSABIILAH NURSYIFA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310048', '320675ecac295a5bf73c7592a7f78eaa', '04404004', NULL, NULL, NULL, NULL, NULL, NULL),
+(161, 121, '222310049', 'HABSI AHMAD WIDIYANTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310049', '320675ecac295a5bf73c7592a7f78eaa', '10417445', NULL, NULL, NULL, NULL, NULL, NULL),
+(162, 121, '222310079', 'HAFIZH MUFI ALFARIZI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310079', '320675ecac295a5bf73c7592a7f78eaa', '40417044', NULL, NULL, NULL, NULL, NULL, NULL),
+(163, 121, '222310054', 'KAYLA NAZWA AZZAHRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310054', '320675ecac295a5bf73c7592a7f78eaa', '40074444', NULL, NULL, NULL, NULL, NULL, NULL),
+(164, 121, '222310056', 'KEYSHA ANJANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310056', '320675ecac295a5bf73c7592a7f78eaa', '40144074', NULL, NULL, NULL, NULL, NULL, NULL),
+(165, 121, '222310082', 'KINAR AULIA AZAHRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310082', '320675ecac295a5bf73c7592a7f78eaa', '47410405', NULL, NULL, NULL, NULL, NULL, NULL),
+(166, 121, '222310018', 'LILY FHABELLA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310018', '320675ecac295a5bf73c7592a7f78eaa', '40511044', NULL, NULL, NULL, NULL, NULL, NULL),
+(167, 121, '222310083', 'LUTFIYAH KHALIFA ANINDYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310083', '320675ecac295a5bf73c7592a7f78eaa', '54010040', NULL, NULL, NULL, NULL, NULL, NULL),
+(168, 121, '222310057', 'MALIK IBRAHIM', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310057', '320675ecac295a5bf73c7592a7f78eaa', '07501440', NULL, NULL, NULL, NULL, NULL, NULL),
+(169, 121, '222310020', 'MOH RAMDANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310020', '320675ecac295a5bf73c7592a7f78eaa', '44505710', NULL, NULL, NULL, NULL, NULL, NULL),
+(170, 121, '222310087', 'MUHAMAD RADITYA PRABASWARA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310087', '320675ecac295a5bf73c7592a7f78eaa', '70544045', NULL, NULL, NULL, NULL, NULL, NULL),
+(171, 121, '222310062', 'MUHAMMAD RICHY ELFAROUQ', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310062', '320675ecac295a5bf73c7592a7f78eaa', '50005417', NULL, NULL, NULL, NULL, NULL, NULL),
+(172, 121, '222310163', 'NANCY NADYA MUHAEMIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310163', '320675ecac295a5bf73c7592a7f78eaa', '57400104', NULL, NULL, NULL, NULL, NULL, NULL),
+(173, 121, '222310024', 'NAUFAL HANIF OCTAVIANSYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310024', '320675ecac295a5bf73c7592a7f78eaa', '40045050', NULL, NULL, NULL, NULL, NULL, NULL),
+(174, 121, '232411080', 'NAWRAH TUZZUHRAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '232411080', '320675ecac295a5bf73c7592a7f78eaa', '50400715', NULL, NULL, NULL, NULL, NULL, NULL),
+(175, 121, '222310091', 'NISSA AYU INDRIYANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310091', '320675ecac295a5bf73c7592a7f78eaa', '44710005', NULL, NULL, NULL, NULL, NULL, NULL),
+(176, 121, '222310092', 'OMAR ZED ZIYAD JANNEWTON', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310092', '320675ecac295a5bf73c7592a7f78eaa', '54005514', NULL, NULL, NULL, NULL, NULL, NULL),
+(177, 121, '222310029', 'REVALINA CAHYANI MUSLIM', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310029', '320675ecac295a5bf73c7592a7f78eaa', '04147104', NULL, NULL, NULL, NULL, NULL, NULL),
+(178, 121, '222310032', 'SYURAIH RANTISSI HAWAARY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310032', '320675ecac295a5bf73c7592a7f78eaa', '44055104', NULL, NULL, NULL, NULL, NULL, NULL),
+(179, 121, '222310101', 'TARUNI PASA RAMBUNEGARA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310101', '320675ecac295a5bf73c7592a7f78eaa', '47050011', NULL, NULL, NULL, NULL, NULL, NULL),
+(180, 121, '222310068', 'VIOLA AURELLIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310068', '320675ecac295a5bf73c7592a7f78eaa', '70541440', NULL, NULL, NULL, NULL, NULL, NULL),
+(184, 141, '222310102', 'ABID BAIHAQI BASSAMI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310102', '4d790946372444605d86785355028cf3', '10016014', NULL, NULL, NULL, NULL, NULL, NULL),
+(185, 141, '222310104', 'AHMAD ABI AL HABSI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310104', '4d790946372444605d86785355028cf3', '11001640', NULL, NULL, NULL, NULL, NULL, NULL),
+(186, 141, '222310128', 'AISYAH SRI SHAFIRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310128', '4d790946372444605d86785355028cf3', '10144110', NULL, NULL, NULL, NULL, NULL, NULL),
+(187, 141, '222310132', 'ALYAA DIENNOVITA PUTRI NUGRAHA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310132', '4d790946372444605d86785355028cf3', '14417011', NULL, NULL, NULL, NULL, NULL, NULL),
+(188, 141, '222310133', 'BIMO BUDI UTOMO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310133', '4d790946372444605d86785355028cf3', '17606411', NULL, NULL, NULL, NULL, NULL, NULL),
+(189, 141, '222310134', 'CICI NOVA SALSABILA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310134', '4d790946372444605d86785355028cf3', '00404111', NULL, NULL, NULL, NULL, NULL, NULL),
+(190, 141, '222310135', 'DANDY DAVYAN PUTRA PRATAMA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310135', '4d790946372444605d86785355028cf3', '61461140', NULL, NULL, NULL, NULL, NULL, NULL),
+(191, 141, '222310108', 'DZAKI AULIA RAHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310108', '4d790946372444605d86785355028cf3', '04107144', NULL, NULL, NULL, NULL, NULL, NULL),
+(192, 141, '222310109', 'ELANG NEBUKADNEZAR FINAILIR R.P', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310109', '4d790946372444605d86785355028cf3', '41740414', NULL, NULL, NULL, NULL, NULL, NULL),
+(193, 141, '222310110', 'ELFIRA AFIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310110', '4d790946372444605d86785355028cf3', '14404001', NULL, NULL, NULL, NULL, NULL, NULL),
+(194, 141, '222310137', 'FAJAR RIZKY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310137', '4d790946372444605d86785355028cf3', '40140114', NULL, NULL, NULL, NULL, NULL, NULL),
+(195, 141, '222310141', 'KEISHA LAURA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310141', '4d790946372444605d86785355028cf3', '14477714', NULL, NULL, NULL, NULL, NULL, NULL),
+(196, 141, '222310142', 'LAUGES GESIT PIERECHIKO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310142', '4d790946372444605d86785355028cf3', '44411017', NULL, NULL, NULL, NULL, NULL, NULL),
+(197, 141, '222310115', 'MUHAMMAD AZZAM NUR IZZA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310115', '4d790946372444605d86785355028cf3', '17410041', NULL, NULL, NULL, NULL, NULL, NULL),
+(198, 141, '222310145', 'NATASYA AULIA AZ ZAHRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310145', '4d790946372444605d86785355028cf3', '70411100', NULL, NULL, NULL, NULL, NULL, NULL),
+(199, 141, '222310146', 'NIKEN AULIA RAHARJO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310146', '4d790946372444605d86785355028cf3', '14040704', NULL, NULL, NULL, NULL, NULL, NULL),
+(200, 141, '222310121', 'NUR ALFIAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310121', '4d790946372444605d86785355028cf3', '74741171', NULL, NULL, NULL, NULL, NULL, NULL),
+(201, 141, '222310122', 'RAGIL WILLIE PRAKOSO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310122', '4d790946372444605d86785355028cf3', '04117041', NULL, NULL, NULL, NULL, NULL, NULL),
+(202, 141, '222310147', 'SEJATI BINTANG MUHAYADEEN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310147', '4d790946372444605d86785355028cf3', '11004774', NULL, NULL, NULL, NULL, NULL, NULL),
+(203, 141, '222310125', 'TIARA DWI NADYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310125', '4d790946372444605d86785355028cf3', '40141747', NULL, NULL, NULL, NULL, NULL, NULL),
+(204, 141, '222310165', 'WAFA AYAT AKHRAS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310165', '4d790946372444605d86785355028cf3', '04144001', NULL, NULL, NULL, NULL, NULL, NULL),
+(205, 141, '222310148', 'WINIZZ HABIBAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310148', '4d790946372444605d86785355028cf3', '41114717', NULL, NULL, NULL, NULL, NULL, NULL),
+(206, 141, '222310126', 'WISNU PRAYOGA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310126', '4d790946372444605d86785355028cf3', '41441747', NULL, NULL, NULL, NULL, NULL, NULL),
+(207, 141, '232411084', 'TATIA LIANA SANDANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '232411084', '4d790946372444605d86785355028cf3', '01440117', NULL, NULL, NULL, NULL, NULL, NULL),
+(212, 133, '222310127', 'ABBY RAMADHANI PUTRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310127', '36d5f1ee604b96085917ca7c46bfaf31', '40641700', NULL, NULL, NULL, NULL, NULL, NULL),
+(213, 133, '222310129', 'AJENG IZAZ CANDRANINGTIYAS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310129', '36d5f1ee604b96085917ca7c46bfaf31', '44640111', NULL, NULL, NULL, NULL, NULL, NULL),
+(214, 133, '222310105', 'ALHASNA CLAUDYA ASSYAKHVAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310105', '36d5f1ee604b96085917ca7c46bfaf31', '00140461', NULL, NULL, NULL, NULL, NULL, NULL),
+(215, 133, '222310155', 'ALIA ZAHRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310155', '36d5f1ee604b96085917ca7c46bfaf31', '61074041', NULL, NULL, NULL, NULL, NULL, NULL),
+(216, 133, '222310130', 'ALVIN EKA FEBRIAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310130', '36d5f1ee604b96085917ca7c46bfaf31', '07116460', NULL, NULL, NULL, NULL, NULL, NULL),
+(217, 133, '222310131', 'ALYA SALSABILA ADNIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310131', '36d5f1ee604b96085917ca7c46bfaf31', '11440607', NULL, NULL, NULL, NULL, NULL, NULL),
+(218, 133, '222310106', 'AOZORA BINTANG RAYA GUMILAR', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310106', '36d5f1ee604b96085917ca7c46bfaf31', '11074167', NULL, NULL, NULL, NULL, NULL, NULL),
+(219, 133, '222310136', 'DITHA AMALIA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310136', '36d5f1ee604b96085917ca7c46bfaf31', '04011461', NULL, NULL, NULL, NULL, NULL, NULL),
+(220, 133, '222310111', 'FAREL MUHAMMAD KURNIAWI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310111', '36d5f1ee604b96085917ca7c46bfaf31', '11014441', NULL, NULL, NULL, NULL, NULL, NULL),
+(221, 133, '222310112', 'FARHAN GHANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310112', '36d5f1ee604b96085917ca7c46bfaf31', '46404110', NULL, NULL, NULL, NULL, NULL, NULL),
+(222, 133, '222310113', 'FEBRI FEBRIYANTI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310113', '36d5f1ee604b96085917ca7c46bfaf31', '10646410', NULL, NULL, NULL, NULL, NULL, NULL),
+(223, 133, '222310138', 'FERDIANSYAH BACHTIAR', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310138', '36d5f1ee604b96085917ca7c46bfaf31', '71411401', NULL, NULL, NULL, NULL, NULL, NULL),
+(224, 133, '222310167', 'FHARSA HAURA TSABITA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310167', '36d5f1ee604b96085917ca7c46bfaf31', '00640411', NULL, NULL, NULL, NULL, NULL, NULL),
+(225, 133, '222310139', 'GIAN IHZA PRIYADI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310139', '36d5f1ee604b96085917ca7c46bfaf31', '64140170', NULL, NULL, NULL, NULL, NULL, NULL),
+(226, 133, '222310140', 'JIHAN EL FADIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310140', '36d5f1ee604b96085917ca7c46bfaf31', '41414041', NULL, NULL, NULL, NULL, NULL, NULL),
+(227, 133, '222310114', 'KAYLA AMANDA PUTRI FAISAL', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310114', '36d5f1ee604b96085917ca7c46bfaf31', '04171106', NULL, NULL, NULL, NULL, NULL, NULL),
+(228, 133, '222310143', 'MUHAMMAD AZMI ARIQ', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310143', '36d5f1ee604b96085917ca7c46bfaf31', '06410700', NULL, NULL, NULL, NULL, NULL, NULL),
+(229, 133, '222310144', 'MUHAMMAD FAIZI RABBANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310144', '36d5f1ee604b96085917ca7c46bfaf31', '71174404', NULL, NULL, NULL, NULL, NULL, NULL),
+(230, 133, '222310118', 'MUHAMMAD IMAM AL-MALIKI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310118', '36d5f1ee604b96085917ca7c46bfaf31', '17446004', NULL, NULL, NULL, NULL, NULL, NULL),
+(231, 133, '222310119', 'MUHAMMAD RIZQI RAIHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310119', '36d5f1ee604b96085917ca7c46bfaf31', '11464604', NULL, NULL, NULL, NULL, NULL, NULL),
+(232, 133, '222310120', 'NABILLA ABDYA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310120', '36d5f1ee604b96085917ca7c46bfaf31', '46140401', NULL, NULL, NULL, NULL, NULL, NULL),
+(233, 133, '222310123', 'RIZKIAN PUTRA WARDHANA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310123', '36d5f1ee604b96085917ca7c46bfaf31', '70106401', NULL, NULL, NULL, NULL, NULL, NULL),
+(234, 133, '222310124', 'SEVALDO NOVEDRO PUTRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310124', '36d5f1ee604b96085917ca7c46bfaf31', '10706601', NULL, NULL, NULL, NULL, NULL, NULL),
+(235, 133, '222310153', 'TIARA FIFI ALIDA MUSTIKASARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310153', '36d5f1ee604b96085917ca7c46bfaf31', '41401700', NULL, NULL, NULL, NULL, NULL, NULL),
+(240, 137, '212210057', 'ADIS ADELIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210057', 'd41aed73a4d6604a87a6000f57551075', '00421470', NULL, NULL, NULL, NULL, NULL, NULL),
+(241, 137, '212210058', 'ADITYA AJI NUGRAHA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210058', 'd41aed73a4d6604a87a6000f57551075', '40221014', NULL, NULL, NULL, NULL, NULL, NULL),
+(242, 137, '212210031', 'ALDEANA SHANDA DWI HENANDA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210031', 'd41aed73a4d6604a87a6000f57551075', '27142740', NULL, NULL, NULL, NULL, NULL, NULL),
+(243, 137, '212210032', 'ALYAA LATHIIFAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210032', 'd41aed73a4d6604a87a6000f57551075', '11420012', NULL, NULL, NULL, NULL, NULL, NULL),
+(244, 137, '212210037', 'DELYANA KHOIRUNNISA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210037', 'd41aed73a4d6604a87a6000f57551075', '41204071', NULL, NULL, NULL, NULL, NULL, NULL),
+(245, 137, '212210063', 'DEVANATA NARARYA PRASHANDA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210063', 'd41aed73a4d6604a87a6000f57551075', '42111200', NULL, NULL, NULL, NULL, NULL, NULL),
+(246, 137, '212210040', 'FERDHY HARDIANSYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210040', 'd41aed73a4d6604a87a6000f57551075', '11102444', NULL, NULL, NULL, NULL, NULL, NULL),
+(247, 137, '212210007', 'GABRIELL ERNEST NATHANAEL MOSSA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210007', 'd41aed73a4d6604a87a6000f57551075', '04201041', NULL, NULL, NULL, NULL, NULL, NULL),
+(248, 137, '212210069', 'HASYA FAZA ZANETA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210069', 'd41aed73a4d6604a87a6000f57551075', '41004127', NULL, NULL, NULL, NULL, NULL, NULL),
+(249, 137, '212210008', 'ISHMAYA SAPUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210008', 'd41aed73a4d6604a87a6000f57551075', '14440101', NULL, NULL, NULL, NULL, NULL, NULL),
+(250, 137, '212210042', 'JAZZKORD CMAJOR DAHRING', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210042', 'd41aed73a4d6604a87a6000f57551075', '44720144', NULL, NULL, NULL, NULL, NULL, NULL),
+(251, 137, '212210073', 'MOCHAMMAD FAISAL RUSMANA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210073', 'd41aed73a4d6604a87a6000f57551075', '21201071', NULL, NULL, NULL, NULL, NULL, NULL),
+(252, 137, '212210076', 'MUHAMMAD FAUZAN AZHIMA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210076', 'd41aed73a4d6604a87a6000f57551075', '72410222', NULL, NULL, NULL, NULL, NULL, NULL),
+(253, 137, '212210015', 'NABEEL AFZAL AULIA LIMARTA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210015', 'd41aed73a4d6604a87a6000f57551075', '01100144', NULL, NULL, NULL, NULL, NULL, NULL),
+(254, 137, '212210077', 'NABILA RAMADHANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210077', 'd41aed73a4d6604a87a6000f57551075', '74027111', NULL, NULL, NULL, NULL, NULL, NULL),
+(255, 137, '212210012', 'NAFLA ASSYIFA RIZQIYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210012', 'd41aed73a4d6604a87a6000f57551075', '40471722', NULL, NULL, NULL, NULL, NULL, NULL),
+(256, 137, '212210047', 'QEYSHA SALSABILLAH ZAIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210047', 'd41aed73a4d6604a87a6000f57551075', '22420024', NULL, NULL, NULL, NULL, NULL, NULL),
+(257, 137, '212210019', 'RAIKHAN MAULANA FERDIANSYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210019', 'd41aed73a4d6604a87a6000f57551075', '22200710', NULL, NULL, NULL, NULL, NULL, NULL),
+(258, 137, '212210020', 'SAFFANAH NEYSA SUNAJI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210020', 'd41aed73a4d6604a87a6000f57551075', '10242401', NULL, NULL, NULL, NULL, NULL, NULL),
+(259, 137, '212210049', 'SEPTIARA ANASYA RAMADHANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210049', 'd41aed73a4d6604a87a6000f57551075', '40411224', NULL, NULL, NULL, NULL, NULL, NULL),
+(260, 137, '212210021', 'SOFIA MAULIDA MUMTAZ AZIZA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210021', 'd41aed73a4d6604a87a6000f57551075', '00412244', NULL, NULL, NULL, NULL, NULL, NULL),
+(261, 137, '212210051', 'TRI ANANDA HUSNUL KHOTIMAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210051', 'd41aed73a4d6604a87a6000f57551075', '10404427', NULL, NULL, NULL, NULL, NULL, NULL),
+(262, 137, '212210052', 'TRI YULI NUR‘AMALIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210052', 'd41aed73a4d6604a87a6000f57551075', '21220424', NULL, NULL, NULL, NULL, NULL, NULL),
+(263, 137, '212210085', 'ULI YULIANTI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210085', 'd41aed73a4d6604a87a6000f57551075', '40021112', NULL, NULL, NULL, NULL, NULL, NULL),
+(264, 137, '212210054', 'ZAKHRAFA NURUL SYAHIDAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210054', 'd41aed73a4d6604a87a6000f57551075', '04400741', NULL, NULL, NULL, NULL, NULL, NULL),
+(265, 137, '212210055', 'ZAKY SULTHAN PANEJA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210055', 'd41aed73a4d6604a87a6000f57551075', '42444102', NULL, NULL, NULL, NULL, NULL, NULL),
+(266, 137, '212210027', 'ZALFA ADINDA FIRANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210027', 'd41aed73a4d6604a87a6000f57551075', '10710244', NULL, NULL, NULL, NULL, NULL, NULL),
+(268, 122, '212210034', 'AULIA NADRIANI PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210034', '6ff2dd2dc05cd561619471353678070f', '74109424', NULL, NULL, NULL, NULL, NULL, NULL),
+(269, 122, '212210003', 'AZRIL MAHIJA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210003', '6ff2dd2dc05cd561619471353678070f', '42279444', NULL, NULL, NULL, NULL, NULL, NULL),
+(270, 122, '212210060', 'BRIYAN ANDRE PRATAMA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210060', '6ff2dd2dc05cd561619471353678070f', '04729410', NULL, NULL, NULL, NULL, NULL, NULL),
+(271, 122, '212210036', 'DEDEN UBAIDILLAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210036', '6ff2dd2dc05cd561619471353678070f', '74019044', NULL, NULL, NULL, NULL, NULL, NULL),
+(272, 122, '212210064', 'DEVANI ANANDIA PURNAMA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210064', '6ff2dd2dc05cd561619471353678070f', '14470790', NULL, NULL, NULL, NULL, NULL, NULL),
+(273, 122, '212210066', 'DIMAS RAMADHANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210066', '6ff2dd2dc05cd561619471353678070f', '40204044', NULL, NULL, NULL, NULL, NULL, NULL),
+(274, 122, '212210005', 'DINDA KRISTINA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210005', '6ff2dd2dc05cd561619471353678070f', '04907424', NULL, NULL, NULL, NULL, NULL, NULL),
+(275, 122, '212210006', 'ENDI HARPIKO MAULUDIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210006', '6ff2dd2dc05cd561619471353678070f', '44419714', NULL, NULL, NULL, NULL, NULL, NULL),
+(276, 122, '212210038', 'EXCEL PUTRA RAMADHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210038', '6ff2dd2dc05cd561619471353678070f', '40120440', NULL, NULL, NULL, NULL, NULL, NULL),
+(277, 122, '212210067', 'FARHAN AFIF MUSYAFA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210067', '6ff2dd2dc05cd561619471353678070f', '10494470', NULL, NULL, NULL, NULL, NULL, NULL),
+(278, 122, '212210041', 'HASNA TRI ARFIYANTI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210041', '6ff2dd2dc05cd561619471353678070f', '42019904', NULL, NULL, NULL, NULL, NULL, NULL),
+(279, 122, '212210043', 'MUHAMMAD FALIQ AL RAZI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210043', '6ff2dd2dc05cd561619471353678070f', '20900444', NULL, NULL, NULL, NULL, NULL, NULL),
+(280, 122, '212210071', 'MEISHA NATHASIA STEFANNY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210071', '6ff2dd2dc05cd561619471353678070f', '00974140', NULL, NULL, NULL, NULL, NULL, NULL),
+(281, 122, '212210072', 'MIA ZALFA HANIFAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210072', '6ff2dd2dc05cd561619471353678070f', '04901270', NULL, NULL, NULL, NULL, NULL, NULL),
+(282, 122, '212210044', 'MOHAMMAD RAFI ARHABURIZQI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210044', '6ff2dd2dc05cd561619471353678070f', '70004440', NULL, NULL, NULL, NULL, NULL, NULL),
+(283, 122, '212210016', 'NATASYA SUMAWATI FERDIAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210016', '6ff2dd2dc05cd561619471353678070f', '97244474', NULL, NULL, NULL, NULL, NULL, NULL),
+(284, 122, '212210017', 'NAYLUL INAYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210017', '6ff2dd2dc05cd561619471353678070f', '04140944', NULL, NULL, NULL, NULL, NULL, NULL),
+(285, 122, '212210079', 'PUSPA DEWI LARASATI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210079', '6ff2dd2dc05cd561619471353678070f', '44077001', NULL, NULL, NULL, NULL, NULL, NULL),
+(286, 122, '212210080', 'RAFLI AKBAR BIMANTARA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210080', '6ff2dd2dc05cd561619471353678070f', '44140712', NULL, NULL, NULL, NULL, NULL, NULL),
+(287, 122, '212210048', 'RAZAN ILMI HAKIM', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210048', '6ff2dd2dc05cd561619471353678070f', '47904040', NULL, NULL, NULL, NULL, NULL, NULL),
+(288, 122, '212210082', 'SATRIO ACHMAD IBRAHIM', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210082', '6ff2dd2dc05cd561619471353678070f', '42424444', NULL, NULL, NULL, NULL, NULL, NULL),
+(289, 122, '222311161', 'SEKAR AYU PERBAWANINGTYAS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222311161', '6ff2dd2dc05cd561619471353678070f', '17214902', NULL, NULL, NULL, NULL, NULL, NULL),
+(290, 122, '212210024', 'VINA NIHAYATUNNISA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210024', '6ff2dd2dc05cd561619471353678070f', '44442240', NULL, NULL, NULL, NULL, NULL, NULL),
+(291, 122, '222311149', 'WULAN DAVINA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222311149', '6ff2dd2dc05cd561619471353678070f', '94404419', NULL, NULL, NULL, NULL, NULL, NULL),
+(292, 122, '212210025', 'YUVITA CHAHYA HERMAWATY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210025', '6ff2dd2dc05cd561619471353678070f', '44710044', NULL, NULL, NULL, NULL, NULL, NULL),
+(293, 122, '212210026', 'ZAKI ABDILLAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210026', '6ff2dd2dc05cd561619471353678070f', '77499244', NULL, NULL, NULL, NULL, NULL, NULL),
+(294, 122, '212210056', 'ZALIKA ARTA SYAFITRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210056', '6ff2dd2dc05cd561619471353678070f', '44042909', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_siswa` (`id_siswa`, `id_guru`, `nis`, `nama_depan`, `nama_belakang`, `jk`, `provinsi`, `kota`, `kecamatan`, `kelurahan`, `telegram`, `telegram_bot`, `profil`, `password`, `token_kelas`, `username_ortu`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `pekerjaan_ibu`, `telepon_rumah`, `chat_id`) VALUES
+(296, 129, '212210001', 'AGNI RAFI FAHRIZAL', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210001', 'ccf9eb6d63c5cb3d5cbd34494d586713', '47170614', NULL, NULL, NULL, NULL, NULL, NULL),
+(297, 129, '212210030', 'AIDAH HANI PUTRI PULUNGAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210030', 'ccf9eb6d63c5cb3d5cbd34494d586713', '44440710', NULL, NULL, NULL, NULL, NULL, NULL),
+(298, 129, '222311164', 'ANUGRAH ARYO WIBOWO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222311164', 'ccf9eb6d63c5cb3d5cbd34494d586713', '47516246', NULL, NULL, NULL, NULL, NULL, NULL),
+(299, 129, '212210002', 'ARYA KUSUMA DEWA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210002', 'ccf9eb6d63c5cb3d5cbd34494d586713', '11672406', NULL, NULL, NULL, NULL, NULL, NULL),
+(300, 129, '212210033', 'ATHAR NOVRA PRAMADYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210033', 'ccf9eb6d63c5cb3d5cbd34494d586713', '05210652', NULL, NULL, NULL, NULL, NULL, NULL),
+(301, 129, '212210035', 'AYESHA ZIAURRAKHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210035', 'ccf9eb6d63c5cb3d5cbd34494d586713', '51444100', NULL, NULL, NULL, NULL, NULL, NULL),
+(302, 129, '212210004', 'CHIKA DWI DIANDRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210004', 'ccf9eb6d63c5cb3d5cbd34494d586713', '70052445', NULL, NULL, NULL, NULL, NULL, NULL),
+(303, 129, '212210062', 'DENNISH HARDYAN RADITYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210062', 'ccf9eb6d63c5cb3d5cbd34494d586713', '56614474', NULL, NULL, NULL, NULL, NULL, NULL),
+(304, 129, '212210065', 'DIAH MAHARDIKA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210065', 'ccf9eb6d63c5cb3d5cbd34494d586713', '54046402', NULL, NULL, NULL, NULL, NULL, NULL),
+(305, 129, '212210126', 'ELSA ANGGRAENI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210126', 'ccf9eb6d63c5cb3d5cbd34494d586713', '44720045', NULL, NULL, NULL, NULL, NULL, NULL),
+(306, 129, '212210039', 'FAKHRI FAHRURROZI APIP', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210039', 'ccf9eb6d63c5cb3d5cbd34494d586713', '44547275', NULL, NULL, NULL, NULL, NULL, NULL),
+(307, 129, '212210068', 'FERNANDA FARREL SAPUTRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210068', 'ccf9eb6d63c5cb3d5cbd34494d586713', '11604464', NULL, NULL, NULL, NULL, NULL, NULL),
+(308, 129, '212210070', 'JASMINE INDONESIANA WUJUDYAH ALJABAR', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210070', 'ccf9eb6d63c5cb3d5cbd34494d586713', '57650004', NULL, NULL, NULL, NULL, NULL, NULL),
+(309, 129, '212210009', 'JIBRIL MAHAMERU', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210009', 'ccf9eb6d63c5cb3d5cbd34494d586713', '45627045', NULL, NULL, NULL, NULL, NULL, NULL),
+(310, 129, '212210010', 'MOHAMMAD DAFA ARYA PRATAMA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210010', 'ccf9eb6d63c5cb3d5cbd34494d586713', '54644061', NULL, NULL, NULL, NULL, NULL, NULL),
+(311, 129, '212210011', 'MILA AZIZAH SAID', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210011', 'ccf9eb6d63c5cb3d5cbd34494d586713', '40467514', NULL, NULL, NULL, NULL, NULL, NULL),
+(312, 129, '212210045', 'MUHAMMAD FIKRI PUTRA RIYANTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210045', 'ccf9eb6d63c5cb3d5cbd34494d586713', '42610454', NULL, NULL, NULL, NULL, NULL, NULL),
+(313, 129, '212210046', 'MUHAMMAD ROSYAD BAIHAQIE', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210046', 'ccf9eb6d63c5cb3d5cbd34494d586713', '45007064', NULL, NULL, NULL, NULL, NULL, NULL),
+(314, 129, '212210014', 'MUHAMMAD SHEVA WARDHANA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210014', 'ccf9eb6d63c5cb3d5cbd34494d586713', '12404507', NULL, NULL, NULL, NULL, NULL, NULL),
+(315, 129, '212210018', 'RAISHA SASIKIRANI HIDAYAT', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210018', 'ccf9eb6d63c5cb3d5cbd34494d586713', '15146242', NULL, NULL, NULL, NULL, NULL, NULL),
+(316, 129, '212210081', 'SADIYAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210081', 'ccf9eb6d63c5cb3d5cbd34494d586713', '41620705', NULL, NULL, NULL, NULL, NULL, NULL),
+(317, 129, '212210083', 'SHAFA PUTRI UTAMI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210083', 'ccf9eb6d63c5cb3d5cbd34494d586713', '55214040', NULL, NULL, NULL, NULL, NULL, NULL),
+(318, 129, '212210050', 'SITI JULAIHA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210050', 'ccf9eb6d63c5cb3d5cbd34494d586713', '24516447', NULL, NULL, NULL, NULL, NULL, NULL),
+(319, 129, '212210023', 'VANIA ANANDA PUTRI SANJAYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210023', 'ccf9eb6d63c5cb3d5cbd34494d586713', '06047216', NULL, NULL, NULL, NULL, NULL, NULL),
+(320, 129, '212210134', 'VARDA AULIA RAHMADINA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210134', 'ccf9eb6d63c5cb3d5cbd34494d586713', '20724444', NULL, NULL, NULL, NULL, NULL, NULL),
+(321, 129, '212210053', 'ZAHIRA FAZILATUN NISA CAHYANINGTYAS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210053', 'ccf9eb6d63c5cb3d5cbd34494d586713', '16425047', NULL, NULL, NULL, NULL, NULL, NULL),
+(322, 129, '212210028', 'ZUHAYR ZAINI RASHEED', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210028', 'ccf9eb6d63c5cb3d5cbd34494d586713', '40146144', NULL, NULL, NULL, NULL, NULL, NULL),
+(324, 140, '212210086', 'ADAM HISYAM NURHASBI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210086', 'a727c6dc98c434c222f48ac6cf56b15f', '79442440', NULL, NULL, NULL, NULL, NULL, NULL),
+(325, 140, '212210087', 'ANGGILIA PUTRI AYUNI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210087', 'a727c6dc98c434c222f48ac6cf56b15f', '49012424', NULL, NULL, NULL, NULL, NULL, NULL),
+(326, 140, '212210088', 'ANYAPRAMESTI PUTRI SAGITA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210088', 'a727c6dc98c434c222f48ac6cf56b15f', '41047471', NULL, NULL, NULL, NULL, NULL, NULL),
+(327, 140, '212210106', 'ATANIYA QONITATUN NAAJIYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210106', 'a727c6dc98c434c222f48ac6cf56b15f', '14044412', NULL, NULL, NULL, NULL, NULL, NULL),
+(328, 140, '212210107', 'AURELLIA MEY KEYLANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210107', 'a727c6dc98c434c222f48ac6cf56b15f', '74074074', NULL, NULL, NULL, NULL, NULL, NULL),
+(329, 140, '212210108', 'BAGUS SAMANA PUTERA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210108', 'a727c6dc98c434c222f48ac6cf56b15f', '07744047', NULL, NULL, NULL, NULL, NULL, NULL),
+(330, 140, '212210089', 'DHENISA SYARIFAH URFIY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210089', 'a727c6dc98c434c222f48ac6cf56b15f', '02491794', NULL, NULL, NULL, NULL, NULL, NULL),
+(331, 140, '212210090', 'FARREL ADITYA RAHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210090', 'a727c6dc98c434c222f48ac6cf56b15f', '42409447', NULL, NULL, NULL, NULL, NULL, NULL),
+(332, 140, '212210091', 'HABIBI SAEFUDIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210091', 'a727c6dc98c434c222f48ac6cf56b15f', '40070744', NULL, NULL, NULL, NULL, NULL, NULL),
+(333, 140, '212210092', 'JATI NURBAYAN SHIDIQ', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210092', 'a727c6dc98c434c222f48ac6cf56b15f', '00074497', NULL, NULL, NULL, NULL, NULL, NULL),
+(334, 140, '212210093', 'KAYLA CHIKA NAGITA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210093', 'a727c6dc98c434c222f48ac6cf56b15f', '04420472', NULL, NULL, NULL, NULL, NULL, NULL),
+(335, 140, '212210110', 'MAHSYA PUTRI CHANDRANINGTYAS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210110', 'a727c6dc98c434c222f48ac6cf56b15f', '17044749', NULL, NULL, NULL, NULL, NULL, NULL),
+(336, 140, '212210111', 'MAIDA CALISTA EVANIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210111', 'a727c6dc98c434c222f48ac6cf56b15f', '47100124', NULL, NULL, NULL, NULL, NULL, NULL),
+(337, 140, '212210094', 'MEYLAND LINTANG SAKINAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210094', 'a727c6dc98c434c222f48ac6cf56b15f', '42441071', NULL, NULL, NULL, NULL, NULL, NULL),
+(338, 140, '212210112', 'MOCH.LATIF', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210112', 'a727c6dc98c434c222f48ac6cf56b15f', '14071490', NULL, NULL, NULL, NULL, NULL, NULL),
+(339, 140, '212210095', 'MOCHAMAD SUBHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210095', 'a727c6dc98c434c222f48ac6cf56b15f', '11704027', NULL, NULL, NULL, NULL, NULL, NULL),
+(340, 140, '212210097', 'MUHAMMAD DINUL HAQ', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210097', 'a727c6dc98c434c222f48ac6cf56b15f', '29704047', NULL, NULL, NULL, NULL, NULL, NULL),
+(341, 140, '212210098', 'MUHAMMAD FAIZ SYARIFUDIN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210098', 'a727c6dc98c434c222f48ac6cf56b15f', '70419447', NULL, NULL, NULL, NULL, NULL, NULL),
+(342, 140, '212210113', 'MUHAMMAD FARRELLKYU ATHALLAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210113', 'a727c6dc98c434c222f48ac6cf56b15f', '07109402', NULL, NULL, NULL, NULL, NULL, NULL),
+(343, 140, '212210099', 'MUHAMMAD HAIRUL RAMADHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210099', 'a727c6dc98c434c222f48ac6cf56b15f', '41047024', NULL, NULL, NULL, NULL, NULL, NULL),
+(344, 140, '212210100', 'MUHAMMAD HAYKAL GHIFFARY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210100', 'a727c6dc98c434c222f48ac6cf56b15f', '47094404', NULL, NULL, NULL, NULL, NULL, NULL),
+(345, 140, '212210096', 'MUHAMMAD NABIQ IRFAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210096', 'a727c6dc98c434c222f48ac6cf56b15f', '74042494', NULL, NULL, NULL, NULL, NULL, NULL),
+(346, 140, '212210114', 'MUHAMMAD RESTU RIZKY', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210114', 'a727c6dc98c434c222f48ac6cf56b15f', '42104707', NULL, NULL, NULL, NULL, NULL, NULL),
+(347, 140, '212210115', 'MUHAMMAD SABIL', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210115', 'a727c6dc98c434c222f48ac6cf56b15f', '44724709', NULL, NULL, NULL, NULL, NULL, NULL),
+(348, 140, '212210101', 'NABILA ZALFA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '212210101', 'a727c6dc98c434c222f48ac6cf56b15f', '47014942', NULL, NULL, NULL, NULL, NULL, NULL),
+(349, 140, '212210102', 'NADIA SAFIRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210102', 'a727c6dc98c434c222f48ac6cf56b15f', '29144174', NULL, NULL, NULL, NULL, NULL, NULL),
+(350, 140, '212210116', 'NAFISA SALWA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '212210116', 'a727c6dc98c434c222f48ac6cf56b15f', '07142409', NULL, NULL, NULL, NULL, NULL, NULL),
+(351, 140, '212210103', 'NAJLA ASSYIFA RIZQIYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210103', 'a727c6dc98c434c222f48ac6cf56b15f', '70407197', NULL, NULL, NULL, NULL, NULL, NULL),
+(352, 140, '212210117', 'NAZIRA TAZKIYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210117', 'a727c6dc98c434c222f48ac6cf56b15f', '17020777', NULL, NULL, NULL, NULL, NULL, NULL),
+(353, 140, '212210129', 'NEILIE NUR FAUZIA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210129', 'a727c6dc98c434c222f48ac6cf56b15f', '14724914', NULL, NULL, NULL, NULL, NULL, NULL),
+(354, 140, '212210118', 'ROSYANA NAILA ZAFIRAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210118', 'a727c6dc98c434c222f48ac6cf56b15f', '90921744', NULL, NULL, NULL, NULL, NULL, NULL),
+(355, 140, '212210119', 'SAFA AMALIA PUTRI WIJAYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '212210119', 'a727c6dc98c434c222f48ac6cf56b15f', '24714077', NULL, NULL, NULL, NULL, NULL, NULL),
+(356, 140, '212210120', 'SHINTA PUTRI RAMADHANI DIPURA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '212210120', 'a727c6dc98c434c222f48ac6cf56b15f', '29024907', NULL, NULL, NULL, NULL, NULL, NULL),
+(357, 140, '222311150', 'SITI ANISAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222311150', 'a727c6dc98c434c222f48ac6cf56b15f', '24074427', NULL, NULL, NULL, NULL, NULL, NULL),
+(358, 140, '212210121', 'VITTORIO DIJULIAN WIBISONO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '212210121', 'a727c6dc98c434c222f48ac6cf56b15f', '40742774', NULL, NULL, NULL, NULL, NULL, NULL),
+(359, 140, '212210122', 'ZASKIA ARRAHMAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '212210122', 'a727c6dc98c434c222f48ac6cf56b15f', '14970401', NULL, NULL, NULL, NULL, NULL, NULL),
+(361, 128, '222310035', 'ADICA GRAVILLA ZAHRAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310035', '060677a577cd30e2f80d8a6d62b77f23', '44449911', NULL, NULL, NULL, NULL, NULL, NULL),
+(362, 128, '222310003', 'ALDEN HISYAM EKA PRATAMA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310003', '060677a577cd30e2f80d8a6d62b77f23', '44177419', NULL, NULL, NULL, NULL, NULL, NULL),
+(363, 128, '222310069', 'ANDITA PRAMADYA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310069', '060677a577cd30e2f80d8a6d62b77f23', '49971904', NULL, NULL, NULL, NULL, NULL, NULL),
+(364, 128, '222310039', 'ANNIDA SALWA SALSABILA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310039', '060677a577cd30e2f80d8a6d62b77f23', '09149444', NULL, NULL, NULL, NULL, NULL, NULL),
+(365, 128, '222310156', 'ANNISA AULIA AZZAHRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310156', '060677a577cd30e2f80d8a6d62b77f23', '01994141', NULL, NULL, NULL, NULL, NULL, NULL),
+(366, 128, '222310040', 'ATTAYA GHALIN FADILAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310040', '060677a577cd30e2f80d8a6d62b77f23', '94919117', NULL, NULL, NULL, NULL, NULL, NULL),
+(367, 128, '222310005', 'ATTHA MEILINA SHALIH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310005', '060677a577cd30e2f80d8a6d62b77f23', '10411404', NULL, NULL, NULL, NULL, NULL, NULL),
+(368, 128, '222310071', 'BAYU SETIAWAN HADI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310071', '060677a577cd30e2f80d8a6d62b77f23', '91171049', NULL, NULL, NULL, NULL, NULL, NULL),
+(369, 128, '222310041', 'DAFA RIZKI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310041', '060677a577cd30e2f80d8a6d62b77f23', '91071004', NULL, NULL, NULL, NULL, NULL, NULL),
+(370, 128, '222310044', 'DEVINA PUSPA LESTARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310044', '060677a577cd30e2f80d8a6d62b77f23', '90074440', NULL, NULL, NULL, NULL, NULL, NULL),
+(371, 128, '222310154', 'DHIVA SHOFIA NAFISA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310154', '060677a577cd30e2f80d8a6d62b77f23', '14110047', NULL, NULL, NULL, NULL, NULL, NULL),
+(372, 128, '222310009', 'DIPO ENDRATANAYA KUNTO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310009', '060677a577cd30e2f80d8a6d62b77f23', '09044111', NULL, NULL, NULL, NULL, NULL, NULL),
+(373, 128, '222310075', 'ELSA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310075', '060677a577cd30e2f80d8a6d62b77f23', '47991401', NULL, NULL, NULL, NULL, NULL, NULL),
+(374, 128, '222310012', 'FARREL JULIYANA PUTRA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310012', '060677a577cd30e2f80d8a6d62b77f23', '10011949', NULL, NULL, NULL, NULL, NULL, NULL),
+(375, 128, '222310015', 'INDAH AYU LESTARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310015', '060677a577cd30e2f80d8a6d62b77f23', '70914404', NULL, NULL, NULL, NULL, NULL, NULL),
+(376, 128, '222310051', 'IZZA HAIDAR ADNA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310051', '060677a577cd30e2f80d8a6d62b77f23', '79140090', NULL, NULL, NULL, NULL, NULL, NULL),
+(377, 128, '222310053', 'KARLINA CITRA LESTARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310053', '060677a577cd30e2f80d8a6d62b77f23', '01190904', NULL, NULL, NULL, NULL, NULL, NULL),
+(378, 128, '222310081', 'KIANTAMI MULYASIWI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-red', '222310081', '060677a577cd30e2f80d8a6d62b77f23', '71400940', NULL, NULL, NULL, NULL, NULL, NULL),
+(379, 128, '222310084', 'MANDA ANGGANIS', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310084', '060677a577cd30e2f80d8a6d62b77f23', '47941110', NULL, NULL, NULL, NULL, NULL, NULL),
+(380, 128, '222310085', 'MOHAMAD RIDWAN PRASETYO', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310085', '060677a577cd30e2f80d8a6d62b77f23', '14044404', NULL, NULL, NULL, NULL, NULL, NULL),
+(381, 128, '222310059', 'MUHAMMAD FAIZ ABUL FIDA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310059', '060677a577cd30e2f80d8a6d62b77f23', '04440101', NULL, NULL, NULL, NULL, NULL, NULL),
+(382, 128, '222310021', 'MUHAMMAD KAKA ASLAMUTSAQIF', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310021', '060677a577cd30e2f80d8a6d62b77f23', '41470404', NULL, NULL, NULL, NULL, NULL, NULL),
+(383, 128, '222310022', 'NABILAH FARRAS AZZAHRAH', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310022', '060677a577cd30e2f80d8a6d62b77f23', '70044100', NULL, NULL, NULL, NULL, NULL, NULL),
+(384, 128, '222310023', 'NAUFAL AZIZ NURROCHMAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310023', '060677a577cd30e2f80d8a6d62b77f23', '40014041', NULL, NULL, NULL, NULL, NULL, NULL),
+(385, 128, '222310064', 'NIKEISHA VIDA ALODYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-yellow', '222310064', '060677a577cd30e2f80d8a6d62b77f23', '10041104', NULL, NULL, NULL, NULL, NULL, NULL),
+(386, 128, '222310065', 'NINA RAHMA MAHARANI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-green', '222310065', '060677a577cd30e2f80d8a6d62b77f23', '10100140', NULL, NULL, NULL, NULL, NULL, NULL),
+(387, 128, '222310093', 'R.MAULANA MAHAR PRASETYA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310093', '060677a577cd30e2f80d8a6d62b77f23', '00071411', NULL, NULL, NULL, NULL, NULL, NULL),
+(388, 128, '222310095', 'RADEN SEKAR AYULINDRA TIGUSTI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310095', '060677a577cd30e2f80d8a6d62b77f23', '10411470', NULL, NULL, NULL, NULL, NULL, NULL),
+(389, 128, '222310031', 'SAFIRLI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310031', '060677a577cd30e2f80d8a6d62b77f23', '14004440', NULL, NULL, NULL, NULL, NULL, NULL),
+(390, 128, '222310067', 'SHANDY DIONKA', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310067', '060677a577cd30e2f80d8a6d62b77f23', '14174400', NULL, NULL, NULL, NULL, NULL, NULL),
+(391, 128, '222310098', 'SHERILLAH BALQIS HAPSARI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-purple', '222310098', '060677a577cd30e2f80d8a6d62b77f23', '04774041', NULL, NULL, NULL, NULL, NULL, NULL),
+(392, 128, '222310099', 'SITI MUTHMAINNAH PRADITYA PUTRI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-dark', '222310099', '060677a577cd30e2f80d8a6d62b77f23', '40144404', NULL, NULL, NULL, NULL, NULL, NULL),
+(393, 128, '222310034', 'TIRA DWI ANGGRAENI', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310034', '060677a577cd30e2f80d8a6d62b77f23', '70114470', NULL, NULL, NULL, NULL, NULL, NULL),
+(394, 128, '222310152', 'WILLIAM RAMADHAN', '', '', NULL, NULL, NULL, NULL, NULL, 'N', 'user-blue', '222310152', '060677a577cd30e2f80d8a6d62b77f23', '41411140', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -89361,7 +89869,7 @@ ALTER TABLE `a_masukket_guru`
 -- AUTO_INCREMENT for table `a_masukket_karyawan`
 --
 ALTER TABLE `a_masukket_karyawan`
-  MODIFY `id_masukket` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_masukket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `a_masuk_guru`
@@ -89373,7 +89881,7 @@ ALTER TABLE `a_masuk_guru`
 -- AUTO_INCREMENT for table `a_masuk_karyawan`
 --
 ALTER TABLE `a_masuk_karyawan`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `a_pulang`
@@ -89415,7 +89923,7 @@ ALTER TABLE `a_pulang_karyawan`
 -- AUTO_INCREMENT for table `jadwal_libur`
 --
 ALTER TABLE `jadwal_libur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `j_guru`
@@ -89427,7 +89935,7 @@ ALTER TABLE `j_guru`
 -- AUTO_INCREMENT for table `j_karyawan`
 --
 ALTER TABLE `j_karyawan`
-  MODIFY `id_j_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_j_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `profil`
@@ -89457,19 +89965,19 @@ ALTER TABLE `tb_cuti`
 -- AUTO_INCREMENT for table `tb_guru`
 --
 ALTER TABLE `tb_guru`
-  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `tb_jabatan`
 --
 ALTER TABLE `tb_jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_karyawan`
 --
 ALTER TABLE `tb_karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tb_kegiatan_guru`
@@ -89481,7 +89989,7 @@ ALTER TABLE `tb_kegiatan_guru`
 -- AUTO_INCREMENT for table `tb_kelas`
 --
 ALTER TABLE `tb_kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_pengumuman`
@@ -89493,7 +90001,7 @@ ALTER TABLE `tb_pengumuman`
 -- AUTO_INCREMENT for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
 
 --
 -- AUTO_INCREMENT for table `tb_tanggapan`

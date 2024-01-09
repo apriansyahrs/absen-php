@@ -13,7 +13,7 @@
                   <div class="col-md-6">
                      <div class="form-group">
                         <label for="nip">NIP karyawan <span></span></label>
-                        <input type="number" name="nip" id="nip" class="form-control form-control4" required="">
+                        <input type="text" name="nip" id="nip" class="form-control form-control4" required="">
                      </div>
                      <div class="form-group">
                         <label for="nama">Nama karyawan <span></span></label>

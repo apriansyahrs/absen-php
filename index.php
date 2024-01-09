@@ -9,9 +9,9 @@
     <title><?= $tb_setelan['nama'] ?></title>
 
     <meta name="theme-color" content="#0d0072"/>
-    <link rel="manifest" href="assets/js/web.webmanifest">
-    <link rel="apple-touch-icon" href="assets/img/icons8-checkmark-48.png">
 
+    <link rel="manifest" href="<?= base_url() ?>/assets/js/web.webmanifest">
+    <link rel="apple-touch-icon" href="<?= base_url() ?>/assets/img/icons8-checkmark-48.png">
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/img/icons8-checkmark-48.png" type="image/x-icon">
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/bootstrap/css/bootstrap.min.css">
@@ -35,10 +35,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="#beranda">Beranda</a>
-                <a class="nav-item nav-link" href="#fitur-kami">Fitur Kami</a>
-                <a class="nav-item nav-link" href="#tutorial">Tutorial</a>
-                <a class="nav-item nav-link" href="#kontak-kami">Kontak Kami</a>
+                <a class="nav-item nav-link" href="https://smaialazhar5.sch.id">Beranda</a>
+                <a class="nav-item nav-link" href="https://smaialazhar5.sch.id">Kontak</a>
             </div>
         </div>
     </div>

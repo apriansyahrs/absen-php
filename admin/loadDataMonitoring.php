@@ -319,11 +319,13 @@ if ($_POST['what_monitoring'] == 'Siswa') {
                   }
                   $nama_hari = date('l', strtotime($m_tahun . '/' . $m_bulan . '/' . $i));
 
-                  if ($nama_hari !== 'Sunday') {
-                     echo "<th class='first-next'>$i</th>";
-                  } else {
-                     echo "<th class='first-next' style='background-color: #E5E7EB;'>$i</th>";
-                  }
+                  echo "<th class='first-next'>$i</th>";
+
+                //   if ($nama_hari !== 'Sunday') {
+                //      echo "<th class='first-next'>$i</th>";
+                //   } else {
+                //      echo "<th class='first-next' style='background-color: #E5E7EB;'>$i</th>";
+                //   }
                } ?>
             </tr>
             <!-- <tr>
@@ -350,11 +352,12 @@ if ($_POST['what_monitoring'] == 'Siswa') {
                   }
                   $nama_hari = date('l', strtotime($m_tahun . '/' . $m_bulan . '/' . $i));
 
-                  if ($nama_hari !== 'Sunday') {
-                     echo "<th class='first-next'>$i</th>";
-                  } else {
-                     echo "<th class='first-next' style='background-color: #E5E7EB;'>$i</th>";
-                  }
+                  echo "<th class='first-next'>$i</th>";
+                //   if ($nama_hari !== 'Sunday') {
+                //      echo "<th class='first-next'>$i</th>";
+                //   } else {
+                //      echo "<th class='first-next' style='background-color: #E5E7EB;'>$i</th>";
+                //   }
                } ?>
             </tr>
             <!-- <tr>

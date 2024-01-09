@@ -28,24 +28,38 @@ foreach ($result as $a_pulang_karyawan) { ?>
          if ($jadwal_libur) {
             echo '<td style="background-color: #E5E7EB;" title="' . $jadwal_libur['keterangan'] . '">L</td>';
          } else {
-            if ($nama_hari !== 'Sunday') {
-               if (!empty($a_pulang_karyawan[$i])) {
-                  $a_pulangket_karyawan = query("SELECT * FROM a_pulangket_karyawan WHERE token_pulang = '$a_pulang_karyawan[$i]'");
-                  echo '<td class="cursor-pointer info-pulang" data-token_pulang="' . $a_pulang_karyawan[$i] . '" data-id_karyawan="' . $a_pulang_karyawan['id_karyawan'] . '">';
+            // if ($nama_hari !== 'Sunday') {
+            //    if (!empty($a_pulang_karyawan[$i])) {
+            //       $a_pulangket_karyawan = query("SELECT * FROM a_pulangket_karyawan WHERE token_pulang = '$a_pulang_karyawan[$i]'");
+            //       echo '<td class="cursor-pointer info-pulang" data-token_pulang="' . $a_pulang_karyawan[$i] . '" data-id_karyawan="' . $a_pulang_karyawan['id_karyawan'] . '">';
 
-                  if ($a_pulangket_karyawan['p_alasan'] == 'cuti') {
-                     echo 'C';
-                  } else {
-                     echo 'P';
-                  }
+            //       if ($a_pulangket_karyawan['p_alasan'] == 'cuti') {
+            //          echo 'C';
+            //       } else {
+            //          echo 'P';
+            //       }
 
-                  echo '</td>';
-               } else {
-                  echo '<td></td>';
-               }
-            } else {
-               echo "<td style='background-color: #E5E7EB;'></td>";
-            }
+            //       echo '</td>';
+            //    } else {
+            //       echo '<td></td>';
+            //    }
+            // } else {
+            //    echo "<td style='background-color: #E5E7EB;'></td>";
+            // }
+            if (!empty($a_pulang_karyawan[$i])) {
+                $a_pulangket_karyawan = query("SELECT * FROM a_pulangket_karyawan WHERE token_pulang = '$a_pulang_karyawan[$i]'");
+                echo '<td class="cursor-pointer info-pulang" data-token_pulang="' . $a_pulang_karyawan[$i] . '" data-id_karyawan="' . $a_pulang_karyawan['id_karyawan'] . '">';
+
+                if ($a_pulangket_karyawan['p_alasan'] == 'cuti') {
+                   echo 'C';
+                } else {
+                   echo 'P';
+                }
+
+                echo '</td>';
+             } else {
+                echo '<td></td>';
+             }
          }
       } ?>
    </tr>

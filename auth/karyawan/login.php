@@ -45,7 +45,7 @@ if (isset($_SESSION['karyawan'])) {
                <p class="text-center f-size-16px">Silakan login ke dalam akun kamu</p>
                <form id="formLoginKaryawan">
                   <div class="form-group">
-                     <input type="text" name="nip" id="nip" class="form-control form-control2" placeholder="NIP karyawan">
+                     <input type="text" name="nip" id="nip" class="form-control form-control2" placeholder="Username">
                   </div>
                   <div class="form-group">
                      <input type="password" name="password" id="password" class="form-control form-control2" placeholder="Password">

@@ -137,3 +137,12 @@ if (isset($_GET['change_token_kelas_admin'])) {
       echo "<option value='$tb_kelas[token_kelas]'>$tb_kelas[kelas]</option>";
    }
 }
+
+if (isset($_GET['change_siswa_admin'])) {
+   $id_guru = $_POST['id_guru'];
+   $result = mysqli_query($conn, "SELECT id_siswa, nis, nama_depan, nama_belakang FROM tb_siswa WHERE id_guru = '$id_guru'");
+   echo "<option value=''></option>";
+   foreach ($result as $tb_siswa) {
+      echo "<option value='$tb_siswa[id_siswa]'>$tb_siswa[nis] - $tb_siswa[nama_depan]</option>";
+   }
+}

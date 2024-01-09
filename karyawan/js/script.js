@@ -68,7 +68,7 @@ $('#click-absen-masuk, #click-absen-masuk-terlambat').click(function () {
       longitude = p.coords.longitude;
       $('#latitude').val(latitude);
       $('#longitude').val(longitude);
-      
+
       $('#modalAbsenMasuk').modal('show');
       $('#modalAbsenMasukTerlambat').modal('show');
    }
@@ -81,16 +81,16 @@ $('#click-absen-masuk, #click-absen-masuk-terlambat').click(function () {
 
 $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
     e.preventDefault();
-    
+
     Webcam.snap(function (data_uri) {
         $('#m_foto').val(data_uri);
     });
-    
+
     let dataa = new FormData(this);
-    
+
     // get data settings
     let allText = "";
-    
+
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", "../../../baseUrl.txt", false);
     rawFile.onreadystatechange = function ()
@@ -104,7 +104,7 @@ $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
         }
     }
     rawFile.send(null);
-    
+
     const url = allText + "/api/settings";
 
     fetch(url)
@@ -124,7 +124,7 @@ $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
         var lat1 = latitude;
         var lon1 = longitude;
 
-        var R = 6371; // km 
+        var R = 6371; // km
         //has a problem with the .toRad() method below.
         var x1 = lat2 - lat1;
         var dLat = x1.toRad();
@@ -138,32 +138,32 @@ $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
         var e = d / 0.0010000;
 
         var meter = e.toString().split('.')[0];
-        
+
         if ($("#m_alasan_text").val() == "hadir" && databanget.hadir_radius == 1) {
             if (meter > parseInt(databanget.radius_meter)) {
                 pesan("Anda berada di " + meter + " meter dari jangkauan", 3000);
                 return false;
             }
         }
-        
+
         if ($("#m_alasan_text").val() == "izin" && databanget.izin_radius == 1) {
             if (meter > parseInt(databanget.radius_meter)) {
                 pesan("Anda berada di " + meter + " meter dari jangkauan", 3000);
                 return false;
             }
         }
-        
+
         if ($("#m_alasan_text").val() == "sakit" && databanget.sakit_radius == 1) {
             if (meter > parseInt(databanget.radius_meter)) {
                 pesan("Anda berada di " + meter + " meter dari jangkauan", 3000);
                 return false;
             }
         }
-    
+
         $('#btn-absen-masuk').attr('disabled', 'disabled');
         $('#btn-absen-masuk').html('<div class="spinner-border text-white" role="status"></div>');
-    
-       
+
+
         $.ajax({
             type: 'post',
             url: 'aksi-absen?absen_masuk',
@@ -175,7 +175,7 @@ $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
             if (data == 'berhasil') {
                 window.location.href = 'terimakasih';
             }
-    
+
             if (data == 'gagal') {
                 pesan('Terdapat kesalahan pada sistem!', 3000);
                 $('#btn-absen-masuk').removeAttr('disabled', 'disabled');
@@ -183,13 +183,13 @@ $('#formAbsenMasuk, #formAbsenMasukTerlambat').submit(function (e) {
              }
           }
        });
-        
+
     })
     .catch(function(error) {
         pesan(error, 3000);
     });
-    
-   
+
+
 });
 
 $('#click-absen-pulang').click(function () {
@@ -215,10 +215,10 @@ $('#click-absen-pulang').click(function () {
       longitude = p.coords.longitude;
       $('#latitude_pulang').val(latitude);
       $('#longitude_pulang').val(longitude);
-      
+
       // get data settings
         let allText = "";
-        
+
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", "../../../baseUrl.txt", false);
         rawFile.onreadystatechange = function ()
@@ -232,27 +232,27 @@ $('#click-absen-pulang').click(function () {
             }
         }
         rawFile.send(null);
-        
+
         const url = allText + "/api/settings";
 
         fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
           let databanget = data.data;
-          
+
           Number.prototype.toRad = function () {
             return this * Math.PI / 180;
             }
-    
+
             // default sistem
             var lat2 = parseFloat(databanget.latitude_instansi);
             var lon2 = parseFloat(databanget.longitude_instansi);
-    
+
             // user location
             var lat1 = latitude;
             var lon1 = longitude;
-    
-            var R = 6371; // km 
+
+            var R = 6371; // km
             //has a problem with the .toRad() method below.
             var x1 = lat2 - lat1;
             var dLat = x1.toRad();
@@ -264,9 +264,9 @@ $('#click-absen-pulang').click(function () {
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             var d = R * c;
             var e = d / 0.0010000;
-    
+
             var meter = e.toString().split('.')[0];
-    
+
             if (meter > parseInt(databanget.radius_meter)) {
                 pesan("Anda berada di " + meter + " meter dari jangkauan", 3000);
             } else {
@@ -283,7 +283,7 @@ $('#click-absen-pulang').click(function () {
       return false;
    }
 
-   
+
 });
 
 $('#formAbsenPulang').submit(function (e) {

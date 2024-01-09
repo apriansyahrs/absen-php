@@ -28,29 +28,47 @@ foreach ($result as $a_masuk_karyawan) { ?>
          if ($jadwal_libur) {
             echo '<td style="background-color: #E5E7EB;" title="' . $jadwal_libur['keterangan'] . '">L</td>';
          } else {
-            if ($nama_hari !== 'Sunday') {
-               if (!empty($a_masuk_karyawan[$i])) {
-                  $a_masukket_karyawan = query("SELECT * FROM a_masukket_karyawan WHERE token_masuk = '$a_masuk_karyawan[$i]'");
-                  echo '<td class="cursor-pointer info-masuk" data-token_masuk="' . $a_masuk_karyawan[$i] . '" data-id_karyawan="' . $a_masuk_karyawan['id_karyawan'] . '">';
-                  if ($a_masukket_karyawan['m_alasan'] == 'hadir') {
-                     echo 'H';
-                  } elseif ($a_masukket_karyawan['m_alasan'] == 'izin') {
-                     echo 'I';
-                  } elseif ($a_masukket_karyawan['m_alasan'] == 'sakit') {
-                     echo 'S';
-                  } elseif ($a_masukket_karyawan['m_alasan'] == 'terlambat') {
-                     echo 'T';
-                  } elseif ($a_masukket_karyawan['m_alasan'] == 'cuti') {
-                     echo 'C';
-                  }
-                  echo '</td>';
-               } else {
-                  echo '<td></td>';
-               }
-               // Hari Minggu
-            } else {
-               echo "<td style='background-color: #E5E7EB;'></td>";
-            }
+            // if ($nama_hari !== 'Sunday') {
+            //    if (!empty($a_masuk_karyawan[$i])) {
+            //       $a_masukket_karyawan = query("SELECT * FROM a_masukket_karyawan WHERE token_masuk = '$a_masuk_karyawan[$i]'");
+            //       echo '<td class="cursor-pointer info-masuk" data-token_masuk="' . $a_masuk_karyawan[$i] . '" data-id_karyawan="' . $a_masuk_karyawan['id_karyawan'] . '">';
+            //       if ($a_masukket_karyawan['m_alasan'] == 'hadir') {
+            //          echo 'H';
+            //       } elseif ($a_masukket_karyawan['m_alasan'] == 'izin') {
+            //          echo 'I';
+            //       } elseif ($a_masukket_karyawan['m_alasan'] == 'sakit') {
+            //          echo 'S';
+            //       } elseif ($a_masukket_karyawan['m_alasan'] == 'terlambat') {
+            //          echo 'T';
+            //       } elseif ($a_masukket_karyawan['m_alasan'] == 'cuti') {
+            //          echo 'C';
+            //       }
+            //       echo '</td>';
+            //    } else {
+            //       echo '<td></td>';
+            //    }
+            //    // Hari Minggu
+            // } else {
+            //    echo "<td style='background-color: #E5E7EB;'></td>";
+            // }
+            if (!empty($a_masuk_karyawan[$i])) {
+                $a_masukket_karyawan = query("SELECT * FROM a_masukket_karyawan WHERE token_masuk = '$a_masuk_karyawan[$i]'");
+                echo '<td class="cursor-pointer info-masuk" data-token_masuk="' . $a_masuk_karyawan[$i] . '" data-id_karyawan="' . $a_masuk_karyawan['id_karyawan'] . '">';
+                if ($a_masukket_karyawan['m_alasan'] == 'hadir') {
+                   echo 'H';
+                } elseif ($a_masukket_karyawan['m_alasan'] == 'izin') {
+                   echo 'I';
+                } elseif ($a_masukket_karyawan['m_alasan'] == 'sakit') {
+                   echo 'S';
+                } elseif ($a_masukket_karyawan['m_alasan'] == 'terlambat') {
+                   echo 'T';
+                } elseif ($a_masukket_karyawan['m_alasan'] == 'cuti') {
+                   echo 'C';
+                }
+                echo '</td>';
+             } else {
+                echo '<td></td>';
+             }
          }
       } ?>
    </tr>
